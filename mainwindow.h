@@ -1,27 +1,40 @@
+// mainwindow.h
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QPushButton>
 #include <QLabel>
-QT_BEGIN_NAMESPACE
+#include <QPushButton>
+#include <QScrollArea>
+#include <QPainter>
+#include "map.h"  // 引入 Map 类
+
+
 namespace Ui {
 class MainWindow;
 }
-QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void changeImage();
+
+private slots:
+    void showRouteInputDialog();
 
 private:
     Ui::MainWindow *ui;
-    QPushButton *button;
     QLabel *imageLabel;
+    QScrollArea *scrollArea;
+    QPushButton *button;
+    Map *map;  // Map 类对象，用于显示地图和绘制路径
+
+    // Add the function declaration
+    void drawRouteOnMap(const QString &startPoint, const QString &endPoint);
+    void changeImage();
 };
+
 #endif // MAINWINDOW_H

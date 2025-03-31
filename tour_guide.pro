@@ -10,10 +10,16 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    map.cpp \
+    route.cpp \
+    routeinputdialog.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    map.h \
+    route.h \
+    routeinputdialog.h
 
 FORMS += \
     mainwindow.ui
