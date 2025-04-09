@@ -10,7 +10,7 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsItemGroup> // 用于存储路径的图形项
 
-
+//test
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
     centralWidget(new QWidget(this)),
