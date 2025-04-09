@@ -14,6 +14,8 @@
 #include "edge.h"
 #include "routeplanner.h"
 
+#include "devicesearchwindow.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -28,6 +30,11 @@ public:
 
 private slots:
     void onPlanRouteClicked();
+    void openDeviceSearchWindow();  // 添加此函数声明
+
+
+ protected:
+     void mousePressEvent(QMouseEvent *event) override;
 
 private:
     QWidget *centralWidget;   // 中央部件

@@ -9,6 +9,11 @@
 #include <QPixmap>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsItemGroup> // 用于存储路径的图形项
+#include <QMouseEvent>
+#include <QMessageBox>
+
+#include <QGraphicsRectItem>  // 添加此头文件用于绘制矩形
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -105,7 +110,7 @@ void MainWindow::initData() {
     nodes.push_back(Node(48, 285, 470, "路口19",INTERSECTION));
     nodes.push_back(Node(49, 415, 600, "路口20",INTERSECTION));
     nodes.push_back(Node(50, 170, 611, "路口21",INTERSECTION));
-    nodes.push_back(Node(51, 170, 670, "饭店1",RESTERANT));
+    nodes.push_back(Node(51, 170, 670, "饭店2",RESTERANT));
     nodes.push_back(Node(52, 370, 655, "路口23",INTERSECTION));
     nodes.push_back(Node(53, 415, 830, "卫生间3",TOLIET));
     nodes.push_back(Node(54, 505, 865, "路口25",INTERSECTION));
@@ -284,6 +289,14 @@ void MainWindow::drawMap() {
     QPixmap background(":/images/src/Home3.png");
     QGraphicsPixmapItem *backgroundItem = scene->addPixmap(background);
      backgroundItem->setZValue(-1); // 将背景图的 z 值设置为 -1，使它处于最底层
+
+    // 绘制红色标记区域
+    QGraphicsRectItem *highlightRect = new QGraphicsRectItem(100, 200, 100, 100);  // 创建矩形，设置位置和大小
+    highlightRect->setPen(QPen(Qt::red, 3));  // 设置红色边框和粗细
+    highlightRect->setBrush(QBrush(QColor(255, 0, 0, 50)));  // 设置红色半透明填充
+    // 将矩形添加到场景中
+    scene->addItem(highlightRect);
+
     // 先绘制边（连接节点的线）
     QPen edgePen(Qt::black, 1);
     for (const auto &edge : edges) {
@@ -406,5 +419,27 @@ void MainWindow::planRoute(int startId, int endId) {
     startPoint = -1;
     endPoint = -1;
 }
+
+
+void MainWindow::mousePressEvent(QMouseEvent *event) {
+    // 获取鼠标点击的位置
+    QPointF clickPos = graphicsView->mapToScene(event->pos());
+
+    // 判断点击的区域
+    if (clickPos.x() > 100 && clickPos.x() < 200 && clickPos.y() > 200 && clickPos.y() < 300) {
+        // 点击区域，打开设备查询窗口
+        DeviceSearchWindow *searchWindow = new DeviceSearchWindow(nodes, scene, this);
+        searchWindow->exec();
+    }
+}
+
+
+
+void MainWindow::openDeviceSearchWindow() {
+    // 打开一个新窗口来选择设备类型，并传递 nodes 和 scene
+    DeviceSearchWindow *searchWindow = new DeviceSearchWindow(nodes, scene, this);
+    searchWindow->exec();
+}
+
 
 
