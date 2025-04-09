@@ -3,10 +3,11 @@
 #include <QLabel>
 #include <QPushButton>
 #include <cmath>  // 用于计算距离
-#include <QGraphicsEllipseItem>  // 添加此行以确保包含 QGraphicsEllipseItem
+#include<QGraphicsEllipseItem>
 
 DeviceSearchWindow::DeviceSearchWindow(const std::vector<Node> &nodes, QGraphicsScene *scene, QWidget *parent)
     : QDialog(parent), nodes(nodes), scene(scene) {
+
     // 设置背景色和窗口样式
     this->setStyleSheet("background-color: #F8F0E3;"); // 浅黄色背景
 
@@ -37,8 +38,9 @@ DeviceSearchWindow::DeviceSearchWindow(const std::vector<Node> &nodes, QGraphics
 
     connect(searchButton, &QPushButton::clicked, this, &DeviceSearchWindow::onSearchClicked);
     connect(clearButton, &QPushButton::clicked, this, &DeviceSearchWindow::onClearClicked);
-    connect(this, &QDialog::finished, this, &DeviceSearchWindow::clearHighlightedDevices);
 
+    // 当弹窗关闭时自动清除标亮
+    connect(this, &QDialog::finished, this, &DeviceSearchWindow::clearHighlightedDevices);
 }
 
 DeviceSearchWindow::~DeviceSearchWindow() {
@@ -73,6 +75,9 @@ void DeviceSearchWindow::onSearchClicked() {
     QString deviceType = deviceTypeComboBox->currentText();
     Type type = (deviceType == "饭店") ? RESTERANT : TOLIET;
 
+    // 清除之前的标亮
+    clearHighlightedDevices();
+
     // 查找附近的设施并高亮
     findNearbyDevices(nodes[startId].getX(), nodes[startId].getY(), maxDist, type);
 }
@@ -97,27 +102,17 @@ void DeviceSearchWindow::findNearbyDevices(double x, double y, double maxDist, T
 }
 
 void DeviceSearchWindow::highlightDevices(const std::vector<int>& devices) {
+    QPen highlightPen(Qt::green, 2);
     for (int id : devices) {
         const Node &node = nodes[id];
-
-        // 创建圆角矩形而非普通椭圆
         QGraphicsEllipseItem *highlightItem = new QGraphicsEllipseItem(node.getX() - 5, node.getY() - 5, 10, 10);
-
-        // 设置渐变色
-        QRadialGradient gradient(node.getX(), node.getY(), 20);
-        gradient.setColorAt(0, Qt::green);
-        gradient.setColorAt(1, QColor(0, 255, 0, 50)); // 透明度渐变效果
-
-        highlightItem->setBrush(QBrush(gradient));
-
-        // 设置边框
-        highlightItem->setPen(QPen(Qt::green, 2));
-
+        highlightItem->setPen(highlightPen);
+        highlightItem->setBrush(QBrush(Qt::green));
         scene->addItem(highlightItem);
+
         highlightedItems.push_back(highlightItem);  // 保存高亮设备
     }
 }
-
 
 void DeviceSearchWindow::clearHighlightedDevices() {
     for (auto item : highlightedItems) {

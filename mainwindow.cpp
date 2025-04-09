@@ -12,7 +12,7 @@
 #include <QMouseEvent>
 #include <QMessageBox>
 
-#include <QGraphicsRectItem>  // 添加此头文件用于绘制矩形
+
 
 
 
@@ -290,12 +290,7 @@ void MainWindow::drawMap() {
     QGraphicsPixmapItem *backgroundItem = scene->addPixmap(background);
      backgroundItem->setZValue(-1); // 将背景图的 z 值设置为 -1，使它处于最底层
 
-    // 绘制红色标记区域
-    QGraphicsRectItem *highlightRect = new QGraphicsRectItem(100, 200, 100, 100);  // 创建矩形，设置位置和大小
-    highlightRect->setPen(QPen(Qt::red, 3));  // 设置红色边框和粗细
-    highlightRect->setBrush(QBrush(QColor(255, 0, 0, 50)));  // 设置红色半透明填充
-    // 将矩形添加到场景中
-    scene->addItem(highlightRect);
+
 
     // 先绘制边（连接节点的线）
     QPen edgePen(Qt::black, 1);
@@ -426,7 +421,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event) {
     QPointF clickPos = graphicsView->mapToScene(event->pos());
 
     // 判断点击的区域
-    if (clickPos.x() > 100 && clickPos.x() < 200 && clickPos.y() > 200 && clickPos.y() < 300) {
+    if (clickPos.x() > 268 && clickPos.x() < 300 && clickPos.y() > 110 && clickPos.y() < 220) {
         // 点击区域，打开设备查询窗口
         DeviceSearchWindow *searchWindow = new DeviceSearchWindow(nodes, scene, this);
         searchWindow->exec();

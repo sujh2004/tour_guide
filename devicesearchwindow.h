@@ -20,6 +20,7 @@ public:
 private slots:
     void onSearchClicked();
     void onClearClicked();
+    void clearHighlightedDevices();  // 添加清除高亮的函数
 
 private:
     QComboBox *deviceTypeComboBox;  // 用来选择目标设施类型（饭店、厕所）
@@ -33,7 +34,6 @@ private:
     std::vector<QGraphicsEllipseItem*> highlightedItems;  // 存储已高亮显示的设施项
     void findNearbyDevices(double x, double y, double maxDist, Type deviceType);
     void highlightDevices(const std::vector<int>& devices);
-    void clearHighlightedDevices();  // 清除高亮的设备
 };
 
 #endif // DEVICESSEARCHWINDOW_H
