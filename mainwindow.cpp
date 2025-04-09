@@ -46,7 +46,8 @@ void MainWindow::setupUI() {
     graphicsView->setScene(scene);
     graphicsView->setRenderHint(QPainter::Antialiasing);
     layout->addWidget(graphicsView);
-
+    planRouteButton->move(100, 150);  // 设置按钮位置为 (x=100, y=150)
+    planRouteButton->setStyleSheet("background: transparent; border: none; color: transparent;");
     // 添加按钮
     //layout->addWidget(planRouteButton);
 }
