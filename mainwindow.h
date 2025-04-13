@@ -54,5 +54,6 @@ private:
     void drawMap();  // 绘制地图
     void onNodeButtonClicked(int nodeId);
     void planRoute(int startId, int endId);
+    void createBuildingButtons();
 };
 #endif // MAINWINDOW_H

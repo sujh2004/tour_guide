@@ -354,9 +354,16 @@ debug/moc_devicesearchwindow.cpp: ../../devicesearchwindow.h \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qtabwidget.h \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qrubberband.h \
 		D:/Qt/6.8.3/mingw_64/include/QtCore/qabstractitemmodel.h \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QMessageBox \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qmessagebox.h \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QGraphicsScene \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
+		../../node.h \
+		D:/Qt/6.8.3/mingw_64/include/QtCore/QString \
 		debug/moc_predefs.h \
 		D:/Qt/6.8.3/mingw_64/bin/moc.exe
-	D:\Qt\6.8.3\mingw_64\bin\moc.exe $(DEFINES) --include D:/Code/tour_guide/tour_guide/build/Desktop_Qt_6_8_3_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.8.3/mingw_64/mkspecs/win32-g++ -ID:/Code/tour_guide/tour_guide -ID:/Qt/6.8.3/mingw_64/include -ID:/Qt/6.8.3/mingw_64/include/QtWidgets -ID:/Qt/6.8.3/mingw_64/include/QtGui -ID:/Qt/6.8.3/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -ID:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\devicesearchwindow.h -o debug\moc_devicesearchwindow.cpp
+	D:\Qt\6.8.3\mingw_64\bin\moc.exe $(DEFINES) --include D:/Code/Qt/tour_guide/build/Desktop_Qt_6_8_3_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.8.3/mingw_64/mkspecs/win32-g++ -ID:/Code/Qt/tour_guide -ID:/Qt/6.8.3/mingw_64/include -ID:/Qt/6.8.3/mingw_64/include/QtWidgets -ID:/Qt/6.8.3/mingw_64/include/QtGui -ID:/Qt/6.8.3/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -ID:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\devicesearchwindow.h -o debug\moc_devicesearchwindow.cpp
 
 debug/moc_mainwindow.cpp: ../../mainwindow.h \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QMainWindow \
@@ -600,9 +607,12 @@ debug/moc_mainwindow.cpp: ../../mainwindow.h \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qtabbar.h \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qrubberband.h \
 		D:/Qt/6.8.3/mingw_64/include/QtCore/qabstractitemmodel.h \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QMessageBox \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qmessagebox.h \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		debug/moc_predefs.h \
 		D:/Qt/6.8.3/mingw_64/bin/moc.exe
-	D:\Qt\6.8.3\mingw_64\bin\moc.exe $(DEFINES) --include D:/Code/tour_guide/tour_guide/build/Desktop_Qt_6_8_3_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.8.3/mingw_64/mkspecs/win32-g++ -ID:/Code/tour_guide/tour_guide -ID:/Qt/6.8.3/mingw_64/include -ID:/Qt/6.8.3/mingw_64/include/QtWidgets -ID:/Qt/6.8.3/mingw_64/include/QtGui -ID:/Qt/6.8.3/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -ID:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\mainwindow.h -o debug\moc_mainwindow.cpp
+	D:\Qt\6.8.3\mingw_64\bin\moc.exe $(DEFINES) --include D:/Code/Qt/tour_guide/build/Desktop_Qt_6_8_3_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.8.3/mingw_64/mkspecs/win32-g++ -ID:/Code/Qt/tour_guide -ID:/Qt/6.8.3/mingw_64/include -ID:/Qt/6.8.3/mingw_64/include/QtWidgets -ID:/Qt/6.8.3/mingw_64/include/QtGui -ID:/Qt/6.8.3/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -ID:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -ID:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\mainwindow.h -o debug\moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -844,6 +854,13 @@ debug/devicesearchwindow.o: ../../devicesearchwindow.cpp ../../devicesearchwindo
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qtabwidget.h \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qrubberband.h \
 		D:/Qt/6.8.3/mingw_64/include/QtCore/qabstractitemmodel.h \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QMessageBox \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qmessagebox.h \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QGraphicsScene \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
+		../../node.h \
+		D:/Qt/6.8.3/mingw_64/include/QtCore/QString \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QVBoxLayout \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qboxlayout.h \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qlayout.h \
@@ -852,9 +869,9 @@ debug/devicesearchwindow.o: ../../devicesearchwindow.cpp ../../devicesearchwindo
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QLabel \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qlabel.h \
 		D:/Qt/6.8.3/mingw_64/include/QtGui/qpicture.h \
-		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QMessageBox \
-		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qmessagebox.h \
-		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qdialogbuttonbox.h
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QGraphicsEllipseItem \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qgraphicsitem.h \
+		D:/Qt/6.8.3/mingw_64/include/QtGui/qpainterpath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\devicesearchwindow.o ..\..\devicesearchwindow.cpp
 
 debug/edge.o: ../../edge.cpp ../../edge.h
@@ -1102,6 +1119,9 @@ debug/main.o: ../../main.cpp ../../mainwindow.h \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qtabbar.h \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qrubberband.h \
 		D:/Qt/6.8.3/mingw_64/include/QtCore/qabstractitemmodel.h \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QMessageBox \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qmessagebox.h \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QApplication \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\..\main.cpp
@@ -1348,13 +1368,13 @@ debug/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qtabbar.h \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qrubberband.h \
 		D:/Qt/6.8.3/mingw_64/include/QtCore/qabstractitemmodel.h \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QMessageBox \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qmessagebox.h \
+		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QGraphicsEllipseItem \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QGraphicsLineItem \
 		D:/Qt/6.8.3/mingw_64/include/QtGui/QPen \
 		D:/Qt/6.8.3/mingw_64/include/QtGui/QBrush \
-		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QMessageBox \
-		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qmessagebox.h \
-		D:/Qt/6.8.3/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		D:/Qt/6.8.3/mingw_64/include/QtGui/QPixmap \
 		D:/Qt/6.8.3/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
 		D:/Qt/6.8.3/mingw_64/include/QtGui/QMouseEvent
