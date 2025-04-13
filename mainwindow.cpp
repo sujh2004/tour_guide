@@ -9,6 +9,11 @@
 #include <QPixmap>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsItemGroup> // 用于存储路径的图形项
+#include <QMouseEvent>
+#include <QMessageBox>
+
+
+
 
 //test
 MainWindow::MainWindow(QWidget *parent)
@@ -29,8 +34,6 @@ MainWindow::MainWindow(QWidget *parent)
     // 创建路径规划器
     planner = new RoutePlanner(nodes, edges);
 
-    // 连接按钮点击事件
-    connect(planRouteButton, &QPushButton::clicked, this, &MainWindow::onPlanRouteClicked);
 }
 
 MainWindow::~MainWindow() {
@@ -46,7 +49,8 @@ void MainWindow::setupUI() {
     graphicsView->setScene(scene);
     graphicsView->setRenderHint(QPainter::Antialiasing);
     layout->addWidget(graphicsView);
-
+    planRouteButton->move(100, 150);  // 设置按钮位置为 (x=100, y=150)
+    planRouteButton->setStyleSheet("background: transparent; border: none; color: transparent;");
     // 添加按钮
     //layout->addWidget(planRouteButton);
 }
@@ -104,7 +108,7 @@ void MainWindow::initData() {
     nodes.push_back(Node(48, 285, 470, "路口19",INTERSECTION));
     nodes.push_back(Node(49, 415, 600, "路口20",INTERSECTION));
     nodes.push_back(Node(50, 170, 611, "路口21",INTERSECTION));
-    nodes.push_back(Node(51, 170, 670, "饭店1",RESTERANT));
+    nodes.push_back(Node(51, 170, 670, "饭店2",RESTERANT));
     nodes.push_back(Node(52, 370, 655, "路口23",INTERSECTION));
     nodes.push_back(Node(53, 415, 830, "卫生间3",TOLIET));
     nodes.push_back(Node(54, 505, 865, "路口25",INTERSECTION));
@@ -283,6 +287,9 @@ void MainWindow::drawMap() {
     QPixmap background(":/images/src/Home3.png");
     QGraphicsPixmapItem *backgroundItem = scene->addPixmap(background);
      backgroundItem->setZValue(-1); // 将背景图的 z 值设置为 -1，使它处于最底层
+
+
+
     // 先绘制边（连接节点的线）
     QPen edgePen(Qt::black, 1);
     for (const auto &edge : edges) {
@@ -293,66 +300,24 @@ void MainWindow::drawMap() {
 
 
     // 再绘制节点（小圆）
-    QPen nodePen(Qt::black, 1);
+    /*QPen nodePen(Qt::black, 1);
     QBrush nodeBrush(Qt::blue);
     for (const auto &node : nodes) {
 
         scene->addEllipse(node.getX() - 5, node.getY() - 5, 10, 10, nodePen, nodeBrush);
         //QGraphicsTextItem *text = scene->addText(node.getName());
         //text->setPos(node.getX() + 5, node.getY() + 5);
-
-        // 只为建筑节点创建按钮
-        if (node.getType() == BUILDING ,TOLIET,RESTERANT) {
-            size_t i =node.getId();
-            QPushButton *nodeButton = new QPushButton(node.getName(), this);
-            nodeButton->setGeometry(node.getX() , node.getY() , 40, 20);
-            nodeButton->show();
-            // 连接按钮的点击事件
-            connect(nodeButton, &QPushButton::clicked, this, [this,i]() {
-                onNodeButtonClicked(i);  // 根据按钮点击选择起点或终点
-            });
-        }
     }
+    */
 }
 
 
 
 void MainWindow::onPlanRouteClicked() {
-    // 获取用户输入的起点和终点
-    bool ok1, ok2;
-    int startId = QInputDialog::getInt(this, "起点", "请输入起点ID:", 0, 0, nodes.size() - 1, 1, &ok1);
-    int endId = QInputDialog::getInt(this, "终点", "请输入终点ID:", 0, 0, nodes.size() - 1, 1, &ok2);
 
-    if (ok1 && ok2) {
-        // 计算路径
-        std::vector<int> path = planner->calculateShortestPath(startId, endId);
+    // 创建建筑物按钮
+    createBuildingButtons();
 
-        // 如果有之前的路径，先删除它
-        if (currentPathItemGroup) {
-            scene->removeItem(currentPathItemGroup);  // 删除之前的路径
-            delete currentPathItemGroup;  // 释放内存
-            currentPathItemGroup = nullptr;  // 清空路径组
-        }
-
-        // 如果路径计算成功，显示路径
-        if (!path.empty()) {
-            // 创建一个新的 QGraphicsItemGroup 来存储路径项
-            currentPathItemGroup = new QGraphicsItemGroup();
-
-            QPen pathPen(Qt::red, 2);
-            for (size_t i = 1; i < path.size(); ++i) {
-                const Node &startNode = nodes[path[i-1]];
-                const Node &endNode = nodes[path[i]];
-                QGraphicsLineItem *lineItem = scene->addLine(startNode.getX(), startNode.getY(), endNode.getX(), endNode.getY(), pathPen);
-                currentPathItemGroup->addToGroup(lineItem);  // 将新画的线条加入到路径组
-            }
-
-            scene->addItem(currentPathItemGroup);  // 将路径组添加到场景中
-        } else {
-            // 如果路径为空，显示错误消息
-            QMessageBox::warning(this, "路径错误", "无法找到路径");
-        }
-    }
 }
 
 void MainWindow::onNodeButtonClicked(int nodeId) {
@@ -405,5 +370,47 @@ void MainWindow::planRoute(int startId, int endId) {
     startPoint = -1;
     endPoint = -1;
 }
+
+
+void MainWindow::mousePressEvent(QMouseEvent *event) {
+    // 获取鼠标点击的位置
+    QPointF clickPos = graphicsView->mapToScene(event->pos());
+
+    // 判断点击的区域
+    if (clickPos.x() > 268 && clickPos.x() < 300 && clickPos.y() > 110 && clickPos.y() < 220) {
+        // 点击区域，打开设备查询窗口
+        DeviceSearchWindow *searchWindow = new DeviceSearchWindow(nodes, scene, this);
+        searchWindow->exec();
+    }
+
+    if(clickPos.x() > 120 && clickPos.x() < 157 && clickPos.y() > 110 && clickPos.y() < 220){
+        onPlanRouteClicked();
+    }
+}
+
+void MainWindow::createBuildingButtons() {
+    // 遍历所有节点，为建筑物节点创建按钮
+    for (const auto &node : nodes) {
+        if (node.getType() == BUILDING || node.getType() == TOLIET || node.getType() == RESTERANT) {
+            // 为每个建筑物创建按钮
+            QPushButton *nodeButton = new QPushButton(node.getName(), this);
+            nodeButton->setGeometry(node.getX(), node.getY(), 40, 20);
+            nodeButton->show();
+
+            // 连接按钮的点击事件
+            connect(nodeButton, &QPushButton::clicked, this, [this, node]() {
+                onNodeButtonClicked(node.getId());  // 根据按钮点击选择起点或终点
+            });
+        }
+    }
+}
+
+
+void MainWindow::openDeviceSearchWindow() {
+    // 打开一个新窗口来选择设备类型，并传递 nodes 和 scene
+    DeviceSearchWindow *searchWindow = new DeviceSearchWindow(nodes, scene, this);
+    searchWindow->exec();
+}
+
 
 
