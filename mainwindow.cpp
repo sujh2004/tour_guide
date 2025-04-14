@@ -13,9 +13,6 @@
 #include <QMessageBox>
 
 
-
-
-//test
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
     centralWidget(new QWidget(this)),
@@ -331,6 +328,27 @@ void MainWindow::onNodeButtonClicked(int nodeId) {
         endPoint = nodeId;
         QMessageBox::information(this, "选择终点", "已选择终点: " + nodes[nodeId].getName());
 
+        // 询问用户是否选择途经点
+        bool ok;
+        QString text = QInputDialog::getText(this, "选择途经点", "请输入途经点的名称（多个点请用逗号分隔）", QLineEdit::Normal, "", &ok);
+        if (ok && !text.isEmpty()) {
+            QStringList viaNames = text.split(",");
+            for (const QString &name : viaNames) {
+                // 根据途经点名称找到对应的节点 ID
+                bool found = false;
+                for (const Node &node : nodes) {
+                    if (node.getName() == name.trimmed()) {
+                        viaPoints.push_back(node.getId());
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    QMessageBox::warning(this, "无效途经点", "未找到途经点: " + name.trimmed());
+                }
+            }
+        }
+
         // 计算路径
         planRoute(startPoint, endPoint);
     }
@@ -339,6 +357,29 @@ void MainWindow::onNodeButtonClicked(int nodeId) {
 void MainWindow::planRoute(int startId, int endId) {
     // 计算路径
     std::vector<int> path = planner->calculateShortestPath(startId, endId);
+
+    // 如果有途经点，则先计算起点到第一个途经点的路径
+    if (!viaPoints.empty()) {
+        path = planner->calculateShortestPath(startId, viaPoints[0]);
+        for (size_t i = 0; i < viaPoints.size() - 1; ++i) {
+            // 再计算途经点到下一个途经点的路径
+            auto segmentPath = planner->calculateShortestPath(viaPoints[i], viaPoints[i+1]);
+            path.insert(path.end(), segmentPath.begin() + 1, segmentPath.end());  // 去掉重复的点
+        }
+        // 最后计算途经点的最后一个到终点的路径
+        auto finalPath = planner->calculateShortestPath(viaPoints.back(), endId);
+        path.insert(path.end(), finalPath.begin() + 1, finalPath.end());  // 去掉重复的点
+    } else {
+        // 如果没有途经点，直接计算起点到终点的路径
+        path = planner->calculateShortestPath(startId, endId);
+    }
+
+    // 如果有之前的路径，先删除它
+    if (currentPathItemGroup) {
+        scene->removeItem(currentPathItemGroup);  // 删除之前的路径
+        delete currentPathItemGroup;  // 释放内存
+        currentPathItemGroup = nullptr;  // 清空路径组
+    }
 
     // 如果有之前的路径，先删除它
     if (currentPathItemGroup) {
@@ -369,6 +410,7 @@ void MainWindow::planRoute(int startId, int endId) {
     // 重置起点和终点
     startPoint = -1;
     endPoint = -1;
+    viaPoints.clear();  // 清空途经点
 }
 
 
