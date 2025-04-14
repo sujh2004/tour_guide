@@ -14,9 +14,12 @@
 #include <QMessageBox>
 
 
+<<<<<<< HEAD
 
 //int maptype=0;//0表示未进入寻路模式
 //test
+=======
+>>>>>>> c36d53e2eda2a27c1fbb3b52a68348a0831cdc32
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
     centralWidget(new QWidget(this)),
@@ -58,40 +61,40 @@ void MainWindow::setupUI() {
 
 void MainWindow::initData() {
     // 示例：创建一些节点
-    nodes.push_back(Node(0, 75, 235, "建筑1",BUILDING));
-    nodes.push_back(Node(1, 285, 235, "建筑2",BUILDING));
-    nodes.push_back(Node(2, 504, 235, "建筑3",BUILDING));
-    nodes.push_back(Node(3, 285, 310, "建筑4",BUILDING));
-    nodes.push_back(Node(4, 505, 310, "建筑5",BUILDING));
-    nodes.push_back(Node(5, 285, 370, "建筑6",BUILDING));
-    nodes.push_back(Node(6, 285, 445, "建筑7",BUILDING));
-    nodes.push_back(Node(7, 375, 445, "建筑8",BUILDING));
-    nodes.push_back(Node(8, 505, 425, "建筑9",BUILDING));
-    nodes.push_back(Node(9, 110, 390, "建筑10",BUILDING));
-    nodes.push_back(Node(10, 320, 470, "建筑11",BUILDING));
-    nodes.push_back(Node(11, 235, 470, "建筑12",BUILDING));
-    nodes.push_back(Node(12, 80, 480, "建筑13",BUILDING));
-    nodes.push_back(Node(13, 237, 400, "建筑14",BUILDING));
-    nodes.push_back(Node(14, 505, 480, "建筑15",BUILDING));
-    nodes.push_back(Node(15, 153, 420, "建筑16",BUILDING));
-    nodes.push_back(Node(16, 155, 565, "建筑17",BUILDING));
-    nodes.push_back(Node(17, 285, 573, "建筑18",BUILDING));
-    nodes.push_back(Node(18, 285, 611, "建筑19",BUILDING));
-    nodes.push_back(Node(19, 370, 600, "建筑20",BUILDING));
-    nodes.push_back(Node(20, 415, 655, "建筑21",BUILDING));
-    nodes.push_back(Node(21, 505, 660, "建筑22",BUILDING));
-    nodes.push_back(Node(22, 285, 670, "建筑23",BUILDING));
-    nodes.push_back(Node(23, 285, 745, "建筑24",BUILDING));
-    nodes.push_back(Node(24, 415, 710, "建筑25",BUILDING));
-    nodes.push_back(Node(25, 155, 755, "建筑26",BUILDING));
-    nodes.push_back(Node(26, 285, 830, "建筑27",BUILDING));
-    nodes.push_back(Node(27, 560, 830, "建筑28",BUILDING));
-    nodes.push_back(Node(28, 560, 865, "建筑29",BUILDING));
-    nodes.push_back(Node(29, 55, 865, "建筑30",BUILDING));
+    nodes.push_back(Node(0, 75, 235, "角楼",BUILDING));
+    nodes.push_back(Node(1, 285, 235, "神武门",BUILDING));
+    nodes.push_back(Node(2, 504, 235, "角楼",BUILDING));
+    nodes.push_back(Node(3, 285, 310, "御花园",BUILDING));
+    nodes.push_back(Node(4, 505, 310, "乐寿堂",BUILDING));
+    nodes.push_back(Node(5, 285, 370, "坤宁宫",BUILDING));
+    nodes.push_back(Node(6, 285, 445, "乾清宫",BUILDING));
+    nodes.push_back(Node(7, 375, 445, "景仁宫",BUILDING));
+    nodes.push_back(Node(8, 505, 425, "宁寿宫",BUILDING));
+    nodes.push_back(Node(9, 110, 390, "寿安宫",BUILDING));
+    nodes.push_back(Node(10, 320, 470, "斋宫",BUILDING));
+    nodes.push_back(Node(11, 235, 470, "养心殿",BUILDING));
+    nodes.push_back(Node(12, 80, 480, "寿康宫",BUILDING));
+    nodes.push_back(Node(13, 237, 400, "翊坤宫",BUILDING));
+    nodes.push_back(Node(14, 505, 480, "皇极殿",BUILDING));
+    nodes.push_back(Node(15, 153, 420, "雨花阁",BUILDING));
+    nodes.push_back(Node(16, 155, 565, "慈宁宫",BUILDING));
+    nodes.push_back(Node(17, 285, 573, "保和殿",BUILDING));
+    nodes.push_back(Node(18, 285, 611, "中和殿",BUILDING));
+    nodes.push_back(Node(19, 370, 600, "剑亭",BUILDING));
+    nodes.push_back(Node(20, 415, 655, "文渊阁",BUILDING));
+    nodes.push_back(Node(21, 505, 660, "南三所",BUILDING));
+    nodes.push_back(Node(22, 285, 670, "太和殿",BUILDING));
+    nodes.push_back(Node(23, 285, 745, "太和门",BUILDING));
+    nodes.push_back(Node(24, 415, 710, "文华殿",BUILDING));
+    nodes.push_back(Node(25, 155, 755, "武英殿",BUILDING));
+    nodes.push_back(Node(26, 285, 830, "午门",BUILDING));
+    nodes.push_back(Node(27, 560, 830, "东华门",BUILDING));
+    nodes.push_back(Node(28, 560, 865, "角楼",BUILDING));
+    nodes.push_back(Node(29, 55, 865, "角楼",BUILDING));
     nodes.push_back(Node(30, 110, 235,"路口1",INTERSECTION));
     nodes.push_back(Node(31, 153, 235, "路口2",INTERSECTION));
-    nodes.push_back(Node(32, 218, 235, "卫生间1",TOLIET));
-    nodes.push_back(Node(33, 432, 235, "饭店1",RESTERANT));
+    nodes.push_back(Node(32, 218, 235, "卫生间",TOLIET));
+    nodes.push_back(Node(33, 432, 235, "青禾宴",RESTERANT));
     nodes.push_back(Node(34, 153, 300, "路口5",INTERSECTION));
     nodes.push_back(Node(35, 110, 300, "路口6",INTERSECTION));
     nodes.push_back(Node(36, 153, 340, "路口7",INTERSECTION));
@@ -109,9 +112,9 @@ void MainWindow::initData() {
     nodes.push_back(Node(48, 285, 470, "路口19",INTERSECTION));
     nodes.push_back(Node(49, 415, 600, "路口20",INTERSECTION));
     nodes.push_back(Node(50, 170, 611, "路口21",INTERSECTION));
-    nodes.push_back(Node(51, 170, 670, "饭店2",RESTERANT));
+    nodes.push_back(Node(51, 170, 670, "食客人间",RESTERANT));
     nodes.push_back(Node(52, 370, 655, "路口23",INTERSECTION));
-    nodes.push_back(Node(53, 415, 830, "卫生间3",TOLIET));
+    nodes.push_back(Node(53, 415, 830, "路口24",INTERSECTION));
     nodes.push_back(Node(54, 505, 865, "路口25",INTERSECTION));
     nodes.push_back(Node(55, 200, 830, "路口26",INTERSECTION));
     nodes.push_back(Node(56, 200, 865, "路口27",INTERSECTION));
@@ -119,11 +122,11 @@ void MainWindow::initData() {
     nodes.push_back(Node(58, 155, 830, "路口29",INTERSECTION));
     nodes.push_back(Node(59, 505, 830, "路口30",INTERSECTION));
     nodes.push_back(Node(60, 215, 340, "路口31",INTERSECTION));
-    nodes.push_back(Node(61, 415, 470, "卫生间2",TOLIET));
-    nodes.push_back(Node(62, 375, 390, "饭店3",RESTERANT));
-    nodes.push_back(Node(63, 415, 530, "饭店4",RESTERANT));
-    nodes.push_back(Node(64, 142, 830, "卫生间4",TOLIET));
-    nodes.push_back(Node(65, 415, 775, "卫生间5",TOLIET));
+    nodes.push_back(Node(61, 415, 470, "卫生间",TOLIET));
+    nodes.push_back(Node(62, 375, 390, "食野集",RESTERANT));
+    nodes.push_back(Node(63, 415, 530, "松间小叙",RESTERANT));
+    nodes.push_back(Node(64, 142, 830, "卫生间",TOLIET));
+    nodes.push_back(Node(65, 415, 775, "卫生间",TOLIET));
 
 
     // 示例：添加一些边
@@ -333,6 +336,27 @@ void MainWindow::onNodeButtonClicked(int nodeId) {
         endPoint = nodeId;
         QMessageBox::information(this, "选择终点", "已选择终点: " + nodes[nodeId].getName());
 
+        // 询问用户是否选择途经点
+        bool ok;
+        QString text = QInputDialog::getText(this, "选择途经点", "请输入途经点的名称（多个点请用逗号分隔）", QLineEdit::Normal, "", &ok);
+        if (ok && !text.isEmpty()) {
+            QStringList viaNames = text.split(",");
+            for (const QString &name : viaNames) {
+                // 根据途经点名称找到对应的节点 ID
+                bool found = false;
+                for (const Node &node : nodes) {
+                    if (node.getName() == name.trimmed()) {
+                        viaPoints.push_back(node.getId());
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    QMessageBox::warning(this, "无效途经点", "未找到途经点: " + name.trimmed());
+                }
+            }
+        }
+
         // 计算路径
         planRoute(startPoint, endPoint);
     }
@@ -341,6 +365,29 @@ void MainWindow::onNodeButtonClicked(int nodeId) {
 void MainWindow::planRoute(int startId, int endId) {
     // 计算路径
     std::vector<int> path = planner->calculateShortestPath(startId, endId);
+
+    // 如果有途经点，则先计算起点到第一个途经点的路径
+    if (!viaPoints.empty()) {
+        path = planner->calculateShortestPath(startId, viaPoints[0]);
+        for (size_t i = 0; i < viaPoints.size() - 1; ++i) {
+            // 再计算途经点到下一个途经点的路径
+            auto segmentPath = planner->calculateShortestPath(viaPoints[i], viaPoints[i+1]);
+            path.insert(path.end(), segmentPath.begin() + 1, segmentPath.end());  // 去掉重复的点
+        }
+        // 最后计算途经点的最后一个到终点的路径
+        auto finalPath = planner->calculateShortestPath(viaPoints.back(), endId);
+        path.insert(path.end(), finalPath.begin() + 1, finalPath.end());  // 去掉重复的点
+    } else {
+        // 如果没有途经点，直接计算起点到终点的路径
+        path = planner->calculateShortestPath(startId, endId);
+    }
+
+    // 如果有之前的路径，先删除它
+    if (currentPathItemGroup) {
+        scene->removeItem(currentPathItemGroup);  // 删除之前的路径
+        delete currentPathItemGroup;  // 释放内存
+        currentPathItemGroup = nullptr;  // 清空路径组
+    }
 
     // 如果有之前的路径，先删除它
     if (currentPathItemGroup) {
@@ -354,7 +401,7 @@ void MainWindow::planRoute(int startId, int endId) {
         // 创建一个新的 QGraphicsItemGroup 来存储路径项
         currentPathItemGroup = new QGraphicsItemGroup();
 
-        QPen pathPen(Qt::red, 2);
+        QPen pathPen(Qt::blue, 2);
         for (size_t i = 1; i < path.size(); ++i) {
             const Node &startNode = nodes[path[i-1]];
             const Node &endNode = nodes[path[i]];
@@ -371,6 +418,7 @@ void MainWindow::planRoute(int startId, int endId) {
     // 重置起点和终点
     startPoint = -1;
     endPoint = -1;
+    viaPoints.clear();  // 清空途经点
 }
 
 
@@ -407,7 +455,7 @@ void MainWindow::createBuildingButtons() {
         if (node.getType() == BUILDING || node.getType() == TOLIET || node.getType() == RESTERANT) {
             // 为每个建筑物创建按钮
             QPushButton *nodeButton = new QPushButton(node.getName(), this);
-            nodeButton->setGeometry(node.getX(), node.getY(), 40, 20);
+            nodeButton->setGeometry(node.getX(), node.getY(), 50, 20);
             nodeButton->show();
 
             // 连接按钮的点击事件

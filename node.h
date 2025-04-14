@@ -39,4 +39,4 @@ private:
     Type m_Type;
 };
 
-#endif // NODE_H//hello
+#endif // NODE_H
