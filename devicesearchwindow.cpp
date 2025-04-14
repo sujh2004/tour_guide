@@ -27,11 +27,11 @@ DeviceSearchWindow::DeviceSearchWindow(const std::vector<Node> &nodes, QGraphics
     clearButton = new QPushButton("清除高亮", this);
     clearButton->setStyleSheet("background-color: #C7A47A; color: white; font-family: 'Courier New'; border-radius: 5px;");
 
-    layout->addWidget(new QLabel("选择设施类型："));
+    layout->addWidget(new QLabel("选择您想要的服务（卫生间/饭店）："));
     layout->addWidget(deviceTypeComboBox);
-    layout->addWidget(new QLabel("输入当前位置（如建筑1、饭店2等）："));
+    layout->addWidget(new QLabel("输入当前位置（如午门，皇极殿等）："));
     layout->addWidget(currentPosLineEdit);
-    layout->addWidget(new QLabel("输入最远距离："));
+    layout->addWidget(new QLabel("输入您可以接受的最远距离："));
     layout->addWidget(maxDistanceLineEdit);
     layout->addWidget(searchButton);
     layout->addWidget(clearButton);
