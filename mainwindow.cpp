@@ -393,7 +393,7 @@ void MainWindow::planRoute(int startId, int endId) {
         // 创建一个新的 QGraphicsItemGroup 来存储路径项
         currentPathItemGroup = new QGraphicsItemGroup();
 
-        QPen pathPen(Qt::red, 2);
+        QPen pathPen(Qt::blue, 2);
         for (size_t i = 1; i < path.size(); ++i) {
             const Node &startNode = nodes[path[i-1]];
             const Node &endNode = nodes[path[i]];
