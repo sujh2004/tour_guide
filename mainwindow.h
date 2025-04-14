@@ -47,6 +47,9 @@ private:
     RoutePlanner *planner;    // 路径规划器
     int startPoint = -1;  // 起点
     int endPoint = -1;    // 终点
+
+    int maptype=0;
+
     std::vector<int> viaPoints;
 
     QGraphicsItemGroup *currentPathItemGroup;  // 存储当前高亮路径的图形项组
@@ -56,5 +59,7 @@ private:
     void onNodeButtonClicked(int nodeId);
     void planRoute(int startId, int endId);
     void createBuildingButtons();
+    void showBuildingDetails(int nodeId);
+    void resetRoute();
 };
 #endif // MAINWINDOW_H

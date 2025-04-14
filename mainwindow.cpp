@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "iostream"
 #include <QVBoxLayout>
 #include <QGraphicsEllipseItem>
 #include <QGraphicsLineItem>
@@ -12,6 +13,10 @@
 #include <QMouseEvent>
 #include <QMessageBox>
 
+
+
+//int maptype=0;//0表示未进入寻路模式
+//test
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -107,7 +112,7 @@ void MainWindow::initData() {
     nodes.push_back(Node(50, 170, 611, "路口21",INTERSECTION));
     nodes.push_back(Node(51, 170, 670, "食客人间",RESTERANT));
     nodes.push_back(Node(52, 370, 655, "路口23",INTERSECTION));
-    nodes.push_back(Node(53, 415, 830, "卫生间",TOLIET));
+    nodes.push_back(Node(53, 415, 830, "路口24",INTERSECTION));
     nodes.push_back(Node(54, 505, 865, "路口25",INTERSECTION));
     nodes.push_back(Node(55, 200, 830, "路口26",INTERSECTION));
     nodes.push_back(Node(56, 200, 865, "路口27",INTERSECTION));
@@ -295,7 +300,7 @@ void MainWindow::drawMap() {
         scene->addLine(n1.getX(), n1.getY(), n2.getX(), n2.getY(), edgePen);
     }
 
-
+    onPlanRouteClicked();
     // 再绘制节点（小圆）
     /*QPen nodePen(Qt::black, 1);
     QBrush nodeBrush(Qt::blue);
@@ -306,6 +311,7 @@ void MainWindow::drawMap() {
         //text->setPos(node.getX() + 5, node.getY() + 5);
     }
     */
+
 }
 
 
@@ -393,7 +399,7 @@ void MainWindow::planRoute(int startId, int endId) {
         // 创建一个新的 QGraphicsItemGroup 来存储路径项
         currentPathItemGroup = new QGraphicsItemGroup();
 
-        QPen pathPen(Qt::red, 2);
+        QPen pathPen(Qt::blue, 2);
         for (size_t i = 1; i < path.size(); ++i) {
             const Node &startNode = nodes[path[i-1]];
             const Node &endNode = nodes[path[i]];
@@ -424,25 +430,43 @@ void MainWindow::mousePressEvent(QMouseEvent *event) {
         DeviceSearchWindow *searchWindow = new DeviceSearchWindow(nodes, scene, this);
         searchWindow->exec();
     }
+    if (clickPos.x() > 120 && clickPos.x() < 157 && clickPos.y() > 110 && clickPos.y() < 220 ){
+        switch (maptype) {
+          case 0:  // 进入寻路模式
+            maptype = 1;
+            onPlanRouteClicked();
+             QMessageBox::information(this, "寻路模式","您已进入寻路模式");
+            break;
+          case 1:
+            // 退出寻路模式
+            maptype = 0;
+            resetRoute();
+            break;
 
-    if(clickPos.x() > 120 && clickPos.x() < 157 && clickPos.y() > 110 && clickPos.y() < 220){
-        onPlanRouteClicked();
+        }
+
     }
 }
-
 void MainWindow::createBuildingButtons() {
     // 遍历所有节点，为建筑物节点创建按钮
     for (const auto &node : nodes) {
         if (node.getType() == BUILDING || node.getType() == TOLIET || node.getType() == RESTERANT) {
             // 为每个建筑物创建按钮
             QPushButton *nodeButton = new QPushButton(node.getName(), this);
-            nodeButton->setGeometry(node.getX(), node.getY(), 40, 20);
+            nodeButton->setGeometry(node.getX(), node.getY(), 50, 20);
             nodeButton->show();
 
             // 连接按钮的点击事件
+            if(maptype==1){
             connect(nodeButton, &QPushButton::clicked, this, [this, node]() {
                 onNodeButtonClicked(node.getId());  // 根据按钮点击选择起点或终点
             });
+            }
+            if(maptype==0){
+                connect(nodeButton, &QPushButton::clicked, this, [this, node]() {
+                    showBuildingDetails(node.getId());  // 根据按钮点击显示详细信息
+                });
+            }
         }
     }
 }
@@ -453,6 +477,56 @@ void MainWindow::openDeviceSearchWindow() {
     DeviceSearchWindow *searchWindow = new DeviceSearchWindow(nodes, scene, this);
     searchWindow->exec();
 }
+void MainWindow::showBuildingDetails(int nodeId) {
+    // 获取建筑物节点
+    const Node &node = nodes[nodeId];
 
+    // 根据节点类型构造建筑物详细信息
+    QString typeStr;
+    switch (node.getType()) {
+    case BUILDING:
+        typeStr = "建筑物";
+        break;
+    case INTERSECTION:
+        typeStr = "路口";
+        break;
+    case TOLIET:
+        typeStr = "卫生间";
+        break;
+    case RESTERANT:
+        typeStr = "饭店";
+        break;
+    default:
+        typeStr = "未知类型";
+        break;
+    }
 
+    QString details = QString("名称: %1\n类型: %2\n位置: (%3, %4)")
+                          .arg(node.getName())
+                          .arg(typeStr)
+                          .arg(node.getX())
+                          .arg(node.getY());
+
+    // 弹出消息框显示建筑物的详细信息
+    QMessageBox::information(this, "建筑物详细信息", details);
+}
+
+void MainWindow::resetRoute() {
+    // 如果有之前的路径，先删除它
+    if (currentPathItemGroup) {
+        scene->removeItem(currentPathItemGroup);  // 删除之前的路径
+        delete currentPathItemGroup;  // 释放内存
+        currentPathItemGroup = nullptr;  // 清空路径组
+    }
+
+    // 重置起点和终点
+    startPoint = -1;
+    endPoint = -1;
+
+    // 重新绘制地图，恢复初始状态
+    drawMap();  // 重新绘制地图背景和建筑物节点等
+     maptype = 0;
+    // 可选：弹出提示，告知用户路径已被重置
+    QMessageBox::information(this, "路径重置", "路径规划已被取消，画面已重置。");
+}
 
