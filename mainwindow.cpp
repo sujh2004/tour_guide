@@ -107,7 +107,7 @@ void MainWindow::initData() {
     nodes.push_back(Node(50, 170, 611, "路口21",INTERSECTION));
     nodes.push_back(Node(51, 170, 670, "食客人间",RESTERANT));
     nodes.push_back(Node(52, 370, 655, "路口23",INTERSECTION));
-    nodes.push_back(Node(53, 415, 830, "卫生间",TOLIET));
+    nodes.push_back(Node(53, 415, 830, "路口24",INTERSECTION));
     nodes.push_back(Node(54, 505, 865, "路口25",INTERSECTION));
     nodes.push_back(Node(55, 200, 830, "路口26",INTERSECTION));
     nodes.push_back(Node(56, 200, 865, "路口27",INTERSECTION));
@@ -436,7 +436,7 @@ void MainWindow::createBuildingButtons() {
         if (node.getType() == BUILDING || node.getType() == TOLIET || node.getType() == RESTERANT) {
             // 为每个建筑物创建按钮
             QPushButton *nodeButton = new QPushButton(node.getName(), this);
-            nodeButton->setGeometry(node.getX(), node.getY(), 40, 20);
+            nodeButton->setGeometry(node.getX(), node.getY(), 50, 20);
             nodeButton->show();
 
             // 连接按钮的点击事件
