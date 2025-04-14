@@ -54,9 +54,9 @@ void MainWindow::setupUI() {
 
 void MainWindow::initData() {
     // 示例：创建一些节点
-    nodes.push_back(Node(0, 75, 235, "角楼",BUILDING));
+    nodes.push_back(Node(0, 75, 235, "西北角楼",BUILDING));
     nodes.push_back(Node(1, 285, 235, "神武门",BUILDING));
-    nodes.push_back(Node(2, 504, 235, "角楼",BUILDING));
+    nodes.push_back(Node(2, 504, 235, "东北角楼",BUILDING));
     nodes.push_back(Node(3, 285, 310, "御花园",BUILDING));
     nodes.push_back(Node(4, 505, 310, "乐寿堂",BUILDING));
     nodes.push_back(Node(5, 285, 370, "坤宁宫",BUILDING));
@@ -82,8 +82,8 @@ void MainWindow::initData() {
     nodes.push_back(Node(25, 155, 755, "武英殿",BUILDING));
     nodes.push_back(Node(26, 285, 830, "午门",BUILDING));
     nodes.push_back(Node(27, 560, 830, "东华门",BUILDING));
-    nodes.push_back(Node(28, 560, 865, "角楼",BUILDING));
-    nodes.push_back(Node(29, 55, 865, "角楼",BUILDING));
+    nodes.push_back(Node(28, 560, 865, "东南角楼",BUILDING));
+    nodes.push_back(Node(29, 55, 865, "西南角楼",BUILDING));
     nodes.push_back(Node(30, 110, 235,"路口1",INTERSECTION));
     nodes.push_back(Node(31, 153, 235, "路口2",INTERSECTION));
     nodes.push_back(Node(32, 218, 235, "卫生间",TOLIET));
