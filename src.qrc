@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>src/version1.png</file>
+        <file>src/Home.png</file>
+        <file>src/Home2.png</file>
+        <file>src/Home3.png</file>
+        <file>src/wenwu1.jpg</file>
+        <file>src/wenwu3.jpg</file>
+        <file>src/wenwu2.jpg</file>
+        <file>src/character.png</file>
+    </qresource>
+    <qresource prefix="/Pamela">
+        <file>image/btn_exit.png</file>
+        <file>image/btn_add.png</file>
+        <file>image/btn_submit.png</file>
+        <file>image/building.png</file>
+        <file>image/restaurant.png</file>
+        <file>image/toilet.png</file>
+        <file>image/FavoriteWidgetBg.jpg</file>
+        <file>image/btn_delete.png</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>HanyiSentyScholar.ttf</file>
+    </qresource>
+    <qresource prefix="/buildings">
+        <file>buildings/0.jpg</file>
+        <file>buildings/1.jpg</file>
+        <file>buildings/3.jpg</file>
+        <file>buildings/6.jpg</file>
+    </qresource>
+    <qresource prefix="/Music">
+        <file>src/bgm.mp3</file>
+    </qresource>
+</RCC>

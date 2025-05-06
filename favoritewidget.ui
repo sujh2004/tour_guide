@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FavoriteWidget</class>
+ <widget class="QWidget" name="FavoriteWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>650</width>
+    <height>950</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LayoutDirection::RightToLeft</enum>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#FavoriteWidget{
+	border-image: url(:/Pamela/image/FavoriteWidgetBg.jpg);
+background-color: rgb(219, 156, 94);
+ border: none;
+}</string>
+  </property>
+  <widget class="QLabel" name="titleLabel">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>50</y>
+     <width>201</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>HanyiSentyScholar</family>
+     <pointsize>36</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #4C1E1A;</string>
+   </property>
+   <property name="text">
+    <string>收藏夹</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidget">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>160</y>
+     <width>421</width>
+     <height>571</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>HanyiSentyScholar</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#listWidget {
+    background-color: #BED2BB; /* 整个列表背景 */
+    border: none;
+    padding: 6px;
+	text-align:center;
+}
+
+#listWidget::item {
+    background-color: #E0DFC6;
+    border: 1px solid #877D52;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 6px 0px; /* 竖直间隔，注意 Qt 样式表有时不生效 */
+
+    color: #5A2E14;
+	text-align:center;
+	font-size:2px;
+}
+
+#listWidget::item:selected {
+    background-color: #FAD6B6;
+    border: 1px solid #8E3B1D;
+    color: #472100;
+}
+
+#listWidget::item:hover {
+    background-color: #EDF1BB;
+
+}
+</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>收藏夹为空</string>
+    </property>
+    <property name="font">
+     <font>
+      <family>HanyiSentyScholar</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="textAlignment">
+     <set>AlignCenter</set>
+    </property>
+   </item>
+  </widget>
+  <widget class="QWidget" name="addWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>370</y>
+     <width>381</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#addWidget{
+background-color:#F0C2A2;
+border: 1px solid #B13B2E;
+border-radius:20px;
+}</string>
+   </property>
+   <widget class="QSlider" name="ratingSlider">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>50</y>
+      <width>131</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>HanyiSentyScholar</family>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ClosedHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QSlider::groove:horizontal {
+    background: #877D52;  /* 轨道背景 */
+    height: 10px;             /* 轨道的高度 */
+}
+
+QSlider::handle:horizontal {
+    background: #E0DFC6;      /* 设置滑块的颜色 */
+    border: 2px solid #E0DFC6; /* 设置滑块边框 */
+    width: 20px;              /* 设置滑块的宽度 */
+    height: 20px;             /* 设置滑块的高度 */
+    border-radius: 10px;      /* 设置滑块的圆角 */
+}
+
+QSlider::sub-page:horizontal {
+    background: #BFB99C; /* 滑过的部分颜色 */
+    border: 1px solid #bbb;
+    height: 10px;
+}
+</string>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>500</number>
+    </property>
+    <property name="singleStep">
+     <number>10</number>
+    </property>
+    <property name="pageStep">
+     <number>10</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Orientation::Horizontal</enum>
+    </property>
+    <property name="invertedAppearance">
+     <bool>true</bool>
+    </property>
+    <property name="invertedControls">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="ratingLabel">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>70</y>
+      <width>101</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>HanyiSentyScholar</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#95302E;</string>
+    </property>
+    <property name="text">
+     <string>喜好程度：3.0</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="placeInput">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>141</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>HanyiSentyScholar</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#placeInput {
+    background-color: #A99F70;
+    color: #003460;
+    border: 1px solid transparent; /* 提前声明默认边框，避免 focus 时抖动 */
+}
+
+#placeInput:focus {
+    background-color: #A99F70;  /* 再次声明背景色，防止被系统默认 focus 样式覆盖 */
+    color: #003460;             /* 再声明字体颜色 */
+    border: 1px solid #003460;  /* 改变边框颜色 */
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="placeholderText">
+     <string>地点名称</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>HanyiSentyScholar</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(130, 35, 39);
+border:none;</string>
+    </property>
+    <property name="text">
+     <string>添加景点到你的收藏夹吧！</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="subButton">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>0</y>
+      <width>21</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>HanyiSentyScholar</family>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/Pamela/image/btn_submit.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="exitButton2">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>0</y>
+      <width>21</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/Pamela/image/btn_exit.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>ratingSlider</zorder>
+   <zorder>ratingLabel</zorder>
+   <zorder>label</zorder>
+   <zorder>subButton</zorder>
+   <zorder>exitButton2</zorder>
+   <zorder>placeInput</zorder>
+  </widget>
+  <widget class="QPushButton" name="addButton">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>10</y>
+     <width>65</width>
+     <height>291</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/Pamela/image/btn_add.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="exitButton">
+   <property name="geometry">
+    <rect>
+     <x>561</x>
+     <y>10</y>
+     <width>61</width>
+     <height>291</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/Pamela/image/btn_exit.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="delButton">
+   <property name="geometry">
+    <rect>
+     <x>555</x>
+     <y>300</y>
+     <width>71</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/Pamela/image/btn_delete.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QWidget" name="deleteWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>370</y>
+     <width>381</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#deleteWidget{
+background-color:#F0C2A2;
+border: 1px solid #B13B2E;
+border-radius:20px;
+}</string>
+   </property>
+   <widget class="QLineEdit" name="placeInput_2">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>60</y>
+      <width>141</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>HanyiSentyScholar</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#placeInput_2 {
+    background-color: #A99F70;
+    color: #003460;
+    border: 1px solid transparent; /* 提前声明默认边框，避免 focus 时抖动 */
+}
+
+#placeInput_2:focus {
+    background-color: #A99F70;  /* 再次声明背景色，防止被系统默认 focus 样式覆盖 */
+    color: #003460;             /* 再声明字体颜色 */
+    border: 1px solid #003460;  /* 改变边框颜色 */
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="placeholderText">
+     <string>地点名称</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>20</y>
+      <width>61</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>HanyiSentyScholar</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(130, 35, 39);
+border:none;</string>
+    </property>
+    <property name="text">
+     <string>删除</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="deleteButton">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>0</y>
+      <width>21</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>HanyiSentyScholar</family>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/Pamela/image/btn_delete.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="exitButton2_2">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>0</y>
+      <width>21</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/Pamela/image/btn_exit.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <zorder>titleLabel</zorder>
+  <zorder>listWidget</zorder>
+  <zorder>addButton</zorder>
+  <zorder>exitButton</zorder>
+  <zorder>addWidget</zorder>
+  <zorder>delButton</zorder>
+  <zorder>deleteWidget</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
