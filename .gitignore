@@ -31,7 +31,3 @@ build-*/
 *.moc
 Makefile*
 
-# Ignore large resource files (too big for GitHub)
-src/bgm.mp3
-image/FavoriteWidgetBg.jpg
-HanyiSentyScholart.ttf

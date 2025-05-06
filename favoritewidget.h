@@ -24,7 +24,6 @@ private slots://槽函数的定义为 private 是为了封装它们，确保只�
     void onRatingChanged(int value);
     void showAddWidget();
     void showDeleteWidget();
-
     void handleSubmitAction();
     void handleDeleteAction();
     void handleExitAction();
