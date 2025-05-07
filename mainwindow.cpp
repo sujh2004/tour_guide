@@ -469,7 +469,7 @@ void MainWindow::planRoute(int startId, int endId) {
         // 创建一个新的 QGraphicsItemGroup 来存储路径项
         currentPathItemGroup = new QGraphicsItemGroup();
 
-        QPen pathPen(Qt::blue, 2);
+        QPen pathPen(QColor("#E1D279"), 2);
 
         // 预先存储所有的路径段
         for (size_t i = 1; i < path.size(); ++i) {
