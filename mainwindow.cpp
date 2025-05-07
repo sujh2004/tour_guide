@@ -36,6 +36,7 @@ MainWindow::MainWindow(QWidget *parent)
     planRouteButton(new QPushButton("规划路线", this)),
     stackedWidget(new QStackedWidget(this)),  // 初始化页面管理器
     puzzlePage(new PuzzleWidget(this)),  // 创建拼图游戏页面
+    migongPgae(new GameMigong(this)),//创建迷宫游戏页面
     planner(nullptr),
     currentPathItemGroup(nullptr),
     musicplayer(new MusicPlayer(this))
@@ -93,7 +94,18 @@ void MainWindow::creategamebotton() {
     connect(gameButton, &QPushButton::clicked, this, &MainWindow::onGameButtonClicked);  // 连接点击事件
 
 }
+void MainWindow::createmigonggamebotton() {
+    // 创建游戏按钮
+    gameButton = new QPushButton("进入迷宫游戏", this);  // 创建按钮
 
+    // 设置游戏按钮的大小
+    gameButton->resize(100, 50);  // 设置按钮的大小为 200x50
+
+    // 设置游戏按钮的位置
+    gameButton->move(550, 150);  // 设置按钮的位置为 (225, 400)
+    connect(gameButton, &QPushButton::clicked, this, &MainWindow::onmigongbuttonclicked);  // 连接点击事件
+
+}
 void MainWindow::setupUI() {
     // 设置中央部件的布局
     QVBoxLayout *layout = new QVBoxLayout;
@@ -400,6 +412,7 @@ void MainWindow::drawMap() {
 
     onPlanRouteClicked();
      creategamebotton();
+    createmigonggamebotton();
     // 再绘制节点（小圆）
     /*QPen nodePen(Qt::black, 1);
     QBrush nodeBrush(Qt::blue);
@@ -704,14 +717,14 @@ void MainWindow::showBuildingDetails(int nodeId) {
         break;
     }
 
-    QString details = QString("名称: %1\n类型: %2\n位置: (%3, %4)")
+    /*QString details = QString("名称: %1\n类型: %2\n位置: (%3, %4)")
                           .arg(node.getName())
                           .arg(typeStr)
                           .arg(node.getX())
-                          .arg(node.getY());
+                          .arg(node.getY());*/
 
     // 弹出消息框显示建筑物的详细信息
-    QMessageBox::information(this, "建筑物详细信息", details);
+    //QMessageBox::information(this, "建筑物详细信息", details);
 }
 
 void MainWindow::resetRoute() {
@@ -741,6 +754,14 @@ void MainWindow::onGameButtonClicked() {
     puzzleWindow->setWindowTitle("拼图游戏");  // 设置窗口标题
     puzzleWindow->resize(800, 1200);  // 设置窗口大小
     puzzleWindow->show();  // 显示窗口
+}
+
+void MainWindow::onmigongbuttonclicked(){
+    // 创建新的迷宫游戏窗口
+    GameMigong *migongWindow = new GameMigong();  // 创建新的拼图窗口
+    migongWindow->setWindowTitle("拼图游戏");  // 设置窗口标题
+    migongWindow->resize(800, 1200);  // 设置窗口大小
+    migongWindow->show();  // 显示窗口
 }
 
 NodeList* MainWindow::getNodes() {

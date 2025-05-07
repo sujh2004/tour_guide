@@ -22,6 +22,7 @@
 #include "playercontroller.h" //添加人物
 #include "introwidget.h"
 #include "musicplayer.h"
+#include "migonggame.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -41,6 +42,7 @@ private slots:
     void onPlanRouteClicked();
     void openDeviceSearchWindow();  // 添加此函数声明
     void onGameButtonClicked();  // 点击拼图游戏按钮的槽函数
+    void onmigongbuttonclicked();//点击迷宫游戏
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -58,6 +60,9 @@ private:
     PlayerController *playerController;//添加人物
     QStackedWidget *stackedWidget;  // 页面管理器
     PuzzleWidget *puzzlePage;  // 拼图游戏页面
+    GameMigong *migongPgae;//迷宫游戏页面
+
+
     IntroWidget* introWidget;//景点介绍页面
     QList<QPushButton*> buildingButtons;  // 管理所有建筑按钮
     std::vector<Node> nodes;  // 存储节点
@@ -89,6 +94,7 @@ private:
     void showBuildingDetails(int nodeId);
     void resetRoute();
     void creategamebotton();
+    void createmigonggamebotton();
     void on_showFavoriteButton_clicked();//进入收藏夹的函数
 };
 #endif // MAINWINDOW_H

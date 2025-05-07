@@ -8,6 +8,7 @@
         <file>src/wenwu3.jpg</file>
         <file>src/wenwu2.jpg</file>
         <file>src/character.png</file>
+        <file>src/migongcharacter.jpg</file>
     </qresource>
     <qresource prefix="/Pamela">
         <file>image/btn_exit.png</file>

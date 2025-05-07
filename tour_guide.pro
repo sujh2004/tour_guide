@@ -16,6 +16,7 @@ SOURCES += \
     introwidget.cpp \
     main.cpp \
     mainwindow.cpp \
+    migonggame.cpp \
     musicplayer.cpp \
     node.cpp \
     nodelist.cpp \
@@ -29,6 +30,7 @@ HEADERS += \
     favoritewidget.h \
     introwidget.h \
     mainwindow.h \
+    migonggame.h \
     musicplayer.h \
     node.h \
     nodelist.h \
