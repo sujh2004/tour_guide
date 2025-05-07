@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>325</width>
+    <width>600</width>
     <height>250</height>
    </rect>
   </property>
@@ -24,7 +24,7 @@ border-radius:20px;
   <widget class="QLabel" name="name">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>160</x>
      <y>0</y>
      <width>221</width>
      <height>71</height>
@@ -47,29 +47,12 @@ border-radius:20px;
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>60</y>
+     <y>80</y>
      <width>121</width>
-     <height>81</height>
+     <height>51</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QLabel" name="id">
-      <property name="font">
-       <font>
-        <family>HanyiSentyScholar</family>
-        <pointsize>11</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color:#683632;
-</string>
-      </property>
-      <property name="text">
-       <string>景点ID：</string>
-      </property>
-     </widget>
-    </item>
     <item>
      <widget class="QLabel" name="type">
       <property name="font">
@@ -87,13 +70,30 @@ border-radius:20px;
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QLabel" name="id">
+      <property name="font">
+       <font>
+        <family>HanyiSentyScholar</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:#683632;
+</string>
+      </property>
+      <property name="text">
+       <string>景点ID：</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QLabel" name="description">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>140</y>
+     <x>20</x>
+     <y>130</y>
      <width>251</width>
      <height>101</height>
     </rect>
@@ -118,10 +118,10 @@ border-radius:20px;
   <widget class="QLabel" name="img">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>50</y>
-     <width>161</width>
-     <height>91</height>
+     <x>300</x>
+     <y>40</y>
+     <width>291</width>
+     <height>191</height>
     </rect>
    </property>
    <property name="styleSheet">
