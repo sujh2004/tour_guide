@@ -139,46 +139,46 @@ void MainWindow::initData() {
                          "西北角楼是故宫四座角楼之一，以其精美的建筑风格和复杂的斗拱结构而著称。"
                          "角楼拥有九梁十八柱七十二条脊，是中国古代建筑艺术的代表作，"
                          "常年吸引大量游客驻足观赏。",
-                         ":/buildings/buildings/0.jpg"));
+                         ":/buildings/buildings/jiaolou.jpg"));
     nodes.push_back(Node(1, 285, 235, "神武门", BUILDING, 0, false,
                          "神武门位于故宫北侧，是紫禁城的北大门。历史上曾为皇帝出入的重要通道，"
                          "如今是故宫博物院的主要出口之一，其建筑风格庄严大气，体现出皇家威仪。",
-                         ":/buildings/buildings/1.jpg"));
+                         ":/buildings/buildings/shenwu.jpg"));
     nodes.push_back(Node(2, 504, 235, "东北角楼",BUILDING, 0, false,
-                         "位于故宫的东北角，是防御性建筑之一，结构独特，位置险要，常作为游客欣赏故宫全景的好地方。"));
+                         "位于故宫的东北角，是防御性建筑之一，结构独特，位置险要，常作为游客欣赏故宫全景的好地方。",":/buildings/buildings/jiaolou.jpg"));
     nodes.push_back(Node(3, 285, 310, "御花园", BUILDING, 0, false,
                          "御花园是故宫的皇家园林，位于紫禁城的北端。园中亭台楼阁错落有致，植被茂盛，"
                          "布局精巧，是皇室成员休憩与赏景的佳地，也展示了古代园林艺术的极致。",
-                         ":/buildings/buildings/3.jpg"));
-    nodes.push_back(Node(4, 505, 310, "乐寿堂",BUILDING,0,false,"为清朝皇帝与皇太后的休养之地，典雅宁静，宫殿装饰精美，展示了清代皇室的奢华与优雅。"));
-    nodes.push_back(Node(5, 285, 370, "坤宁宫",BUILDING,0,false,"清朝时期的皇后寝宫，是故宫中保存较为完好的宫殿之一，气氛庄重，体现了皇后的威仪与宫廷生活。"));
+                         ":/buildings/buildings/yuhuayuan.jpg"));
+    nodes.push_back(Node(4, 505, 310, "乐寿堂",BUILDING,0,false,"为清朝皇帝与皇太后的休养之地，典雅宁静，宫殿装饰精美，展示了清代皇室的奢华与优雅。",":/buildings/buildings/leshou.jpg"));
+    nodes.push_back(Node(5, 285, 370, "坤宁宫",BUILDING,0,false,"清朝时期的皇后寝宫，是故宫中保存较为完好的宫殿之一，气氛庄重，体现了皇后的威仪与宫廷生活。",":/buildings/buildings/kunning.jpg"));
     nodes.push_back(Node(6, 285, 445, "乾清宫", BUILDING, 0, false,
                          "乾清宫为内廷正宫，是清代皇帝居住和处理政务的重要场所。宫内陈设华丽，雕梁画栋，"
                          "彰显皇权的威严与尊贵，是故宫建筑群中最具代表性的宫殿之一。",
-                         ":/buildings/buildings/6.jpg"));
-    nodes.push_back(Node(7, 375, 445, "景仁宫",BUILDING,0,false,"景仁宫位于故宫内，是皇帝的后宫之一，历史悠久。宫殿精致典雅，曾是皇后和妃子们的居所，充满皇家气息。"));
-    nodes.push_back(Node(8, 505, 425, "宁寿宫",BUILDING,0,false,"位于故宫西侧，是慈禧太后的居所，宫内建筑华丽，历史底蕴深厚，展现清朝皇家生活的奢华与庄严。"));
-    nodes.push_back(Node(9, 110, 390, "寿安宫",BUILDING,0,false,"曾为清朝皇太后的寝宫，宫内布局精美，气氛宁静，展现了清朝后宫的威严与典雅。"));
-    nodes.push_back(Node(10, 320, 470, "斋宫",BUILDING,0,false,"位于故宫内，是皇帝日常处理政务的地方之一，古朴庄重，具有浓厚的历史气息和皇室气派。"));
-    nodes.push_back(Node(11, 235, 470, "养心殿",BUILDING,0,false,"清朝皇帝的日常办公场所，宫殿内装饰精美，是清代重要的政治决策中心之一。"));
-    nodes.push_back(Node(12, 80, 480, "寿康宫",BUILDING,0,false,"原为皇太后的寝宫，布局严谨且典雅，是清代宫殿建筑中的代表之一，展现了皇室的奢华生活。"));
-    nodes.push_back(Node(13, 237, 400, "翊坤宫",BUILDING,0,false,"曾是皇太后的居住地，环境清幽，古典宫殿建筑风格突显皇家气派，是清宫文化的重要象征。"));
-    nodes.push_back(Node(14, 505, 480, "皇极殿",BUILDING,0,false,"古老的宫殿，曾为皇帝举行重大仪式的场所，建筑庄重且气势恢宏，是故宫的重要部分。"));
-    nodes.push_back(Node(15, 153, 420, "雨花阁",BUILDING,0,false,"位于故宫东南侧，以其独特的建筑风格和历史背景著称，是古代皇室文人雅集之地。"));
-    nodes.push_back(Node(16, 155, 565, "慈宁宫",BUILDING,0,false,"清朝时期，慈禧太后的居所之一，环境安静且庄严，展现了浓厚的皇室风格。"));
-    nodes.push_back(Node(17, 285, 573, "保和殿",BUILDING,0,false,"皇帝举行重要典礼和大典的场所，殿内宽敞庄严，常举行朝会、封禅大典等。"));
-    nodes.push_back(Node(18, 285, 611, "中和殿",BUILDING,0,false,"故宫的重要宫殿，历代皇帝即位大典的场所之一，气势雄伟，极具历史价值。"));
-    nodes.push_back(Node(19, 370, 600, "剑亭",BUILDING,0,false,"位于故宫内，是皇帝指挥军事或举行仪式的地方，气氛肃穆，充满历史感"));
-    nodes.push_back(Node(20, 415, 655, "文渊阁",BUILDING,0,false,"典藏着大量的皇家图书和文物，是故宫内重要的文化和学术交流场所。"));
-    nodes.push_back(Node(21, 505, 660, "南三所",BUILDING,0,false,"清朝皇帝的寝宫所在，古色古香，典型的宫殿建筑，展示了清代宫廷的日常生活。"));
-    nodes.push_back(Node(22, 285, 670, "太和殿",BUILDING,0,false,"是故宫最重要的殿宇之一，盛大雄伟，历史上皇帝即位、朝会等重大政治活动均在此举行。"));
-    nodes.push_back(Node(23, 285, 745, "太和门",BUILDING,0,false,"故宫的正门，气势宏伟，是游客进入故宫的主要入口，历史上也是皇帝接受朝拜的地方。"));
-    nodes.push_back(Node(24, 415, 710, "文华殿",BUILDING,0,false,"曾是清朝皇帝办公和接见大臣的地方，建筑雄伟典雅，展示了皇室的文化底蕴。"));
-    nodes.push_back(Node(25, 155, 755, "武英殿",BUILDING,0,false,"皇帝的办公场所之一，主要用于接见大臣和举行政务，殿内装饰富丽堂皇。"));
-    nodes.push_back(Node(26, 285, 830, "午门",BUILDING,0,false,"故宫正门，是宫殿的主入口，结构宏伟，是古代皇宫的重要标志。"));
-    nodes.push_back(Node(27, 560, 830, "东华门",BUILDING,0,false,"位于故宫东侧，是宫殿的另一个重要入口，具有深厚的历史文化价值。"));
-    nodes.push_back(Node(28, 560, 865, "东南角楼",BUILDING,0,false,"落于故宫的东南角，作为防御工事之一，角楼建筑独特，景色迷人。"));
-    nodes.push_back(Node(29, 55, 865, "西南角楼",BUILDING,0,false,"位于故宫西南角，与东南角楼互为呼应，建筑独具特色，常被作为故宫的标志性景观之一。"));
+                         ":/buildings/buildings/qianqing.jpg"));
+    nodes.push_back(Node(7, 375, 445, "景仁宫",BUILDING,0,false,"景仁宫位于故宫内，是皇帝的后宫之一，历史悠久。宫殿精致典雅，曾是皇后和妃子们的居所，充满皇家气息。",":/buildings/buildings/jingren.jpg"));
+    nodes.push_back(Node(8, 505, 425, "宁寿宫",BUILDING,0,false,"位于故宫西侧，是慈禧太后的居所，宫内建筑华丽，历史底蕴深厚，展现清朝皇家生活的奢华与庄严。",":/buildings/buildings/ningshou.jpg"));
+    nodes.push_back(Node(9, 110, 390, "寿安宫",BUILDING,0,false,"曾为清朝皇太后的寝宫，宫内布局精美，气氛宁静，展现了清朝后宫的威严与典雅。",":/buildings/buildings/shouan.jpg"));
+    nodes.push_back(Node(10, 320, 470, "斋宫",BUILDING,0,false,"位于故宫内，是皇帝日常处理政务的地方之一，古朴庄重，具有浓厚的历史气息和皇室气派。",":/buildings/buildings/zhaigong.jpg"));
+    nodes.push_back(Node(11, 235, 470, "养心殿",BUILDING,0,false,"清朝皇帝的日常办公场所，宫殿内装饰精美，是清代重要的政治决策中心之一。",":/buildings/buildings/yangxin.jpg"));
+    nodes.push_back(Node(12, 80, 480, "寿康宫",BUILDING,0,false,"原为皇太后的寝宫，布局严谨且典雅，是清代宫殿建筑中的代表之一，展现了皇室的奢华生活。",":/buildings/buildings/shoukang.jpg"));
+    nodes.push_back(Node(13, 237, 400, "翊坤宫",BUILDING,0,false,"曾是皇太后的居住地，环境清幽，古典宫殿建筑风格突显皇家气派，是清宫文化的重要象征。",":/buildings/buildings/yikun.jpg"));
+    nodes.push_back(Node(14, 505, 480, "皇极殿",BUILDING,0,false,"古老的宫殿，曾为皇帝举行重大仪式的场所，建筑庄重且气势恢宏，是故宫的重要部分。",":/buildings/buildings/huangji.jpg"));
+    nodes.push_back(Node(15, 153, 420, "雨花阁",BUILDING,0,false,"位于故宫东南侧，以其独特的建筑风格和历史背景著称，是古代皇室文人雅集之地。",":/buildings/buildings/yuhua.jpg"));
+    nodes.push_back(Node(16, 155, 565, "慈宁宫",BUILDING,0,false,"清朝时期，慈禧太后的居所之一，环境安静且庄严，展现了浓厚的皇室风格。",":/buildings/buildings/cining.jpg"));
+    nodes.push_back(Node(17, 285, 573, "保和殿",BUILDING,0,false,"皇帝举行重要典礼和大典的场所，殿内宽敞庄严，常举行朝会、封禅大典等。",":/buildings/buildings/baohe.jpg"));
+    nodes.push_back(Node(18, 285, 611, "中和殿",BUILDING,0,false,"故宫的重要宫殿，历代皇帝即位大典的场所之一，气势雄伟，极具历史价值。",":/buildings/buildings/zhonghe.jpg"));
+    nodes.push_back(Node(19, 370, 600, "箭亭",BUILDING,0,false,"位于故宫内，是皇帝指挥军事或举行仪式的地方，气氛肃穆，充满历史感",":/buildings/buildings/jianting.jpg"));
+    nodes.push_back(Node(20, 415, 655, "文渊阁",BUILDING,0,false,"典藏着大量的皇家图书和文物，是故宫内重要的文化和学术交流场所。",":/buildings/buildings/wenyuan.jpg"));
+    nodes.push_back(Node(21, 505, 660, "南三所",BUILDING,0,false,"清朝皇帝的寝宫所在，古色古香，典型的宫殿建筑，展示了清代宫廷的日常生活。",":/buildings/buildings/nansan.jpg"));
+    nodes.push_back(Node(22, 285, 670, "太和殿",BUILDING,0,false,"是故宫最重要的殿宇之一，盛大雄伟，历史上皇帝即位、朝会等重大政治活动均在此举行。",":/buildings/buildings/taihe.jpg"));
+    nodes.push_back(Node(23, 285, 745, "太和门",BUILDING,0,false,"故宫的正门，气势宏伟，是游客进入故宫的主要入口，历史上也是皇帝接受朝拜的地方。",":/buildings/buildings/taihemen.jpg"));
+    nodes.push_back(Node(24, 415, 710, "文华殿",BUILDING,0,false,"曾是清朝皇帝办公和接见大臣的地方，建筑雄伟典雅，展示了皇室的文化底蕴。",":/buildings/buildings/wenhua.jpg"));
+    nodes.push_back(Node(25, 155, 755, "武英殿",BUILDING,0,false,"皇帝的办公场所之一，主要用于接见大臣和举行政务，殿内装饰富丽堂皇。",":/buildings/buildings/wuying.jpg"));
+    nodes.push_back(Node(26, 285, 830, "午门",BUILDING,0,false,"故宫正门，是宫殿的主入口，结构宏伟，是古代皇宫的重要标志。",":/buildings/buildings/wumen.jpg"));
+    nodes.push_back(Node(27, 560, 830, "东华门",BUILDING,0,false,"位于故宫东侧，是宫殿的另一个重要入口，具有深厚的历史文化价值。",":/buildings/buildings/donghua.jpg"));
+    nodes.push_back(Node(28, 560, 865, "东南角楼",BUILDING,0,false,"落于故宫的东南角，作为防御工事之一，角楼建筑独特，景色迷人。",":/buildings/buildings/jiaolou.jpg"));
+    nodes.push_back(Node(29, 55, 865, "西南角楼",BUILDING,0,false,"位于故宫西南角，与东南角楼互为呼应，建筑独具特色，常被作为故宫的标志性景观之一。",":/buildings/buildings/jiaolou.jpg"));
     nodes.push_back(Node(30, 110, 235,"路口1",INTERSECTION));
     nodes.push_back(Node(31, 153, 235, "路口2",INTERSECTION));
     nodes.push_back(Node(32, 218, 235, "卫生间",TOLIET));

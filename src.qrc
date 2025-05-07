@@ -27,6 +27,33 @@
         <file>buildings/1.jpg</file>
         <file>buildings/3.jpg</file>
         <file>buildings/6.jpg</file>
+        <file>buildings/baohe.jpg</file>
+        <file>buildings/cining.jpg</file>
+        <file>buildings/donghua.jpg</file>
+        <file>buildings/huangji.jpg</file>
+        <file>buildings/jianting.jpg</file>
+        <file>buildings/jiaolou.jpg</file>
+        <file>buildings/jingren.jpg</file>
+        <file>buildings/kunning.jpg</file>
+        <file>buildings/leshou.jpg</file>
+        <file>buildings/nansan.jpg</file>
+        <file>buildings/ningshou.jpg</file>
+        <file>buildings/shenwu.jpg</file>
+        <file>buildings/shouan.jpg</file>
+        <file>buildings/taihe.jpg</file>
+        <file>buildings/taihemen.jpg</file>
+        <file>buildings/wenhua.jpg</file>
+        <file>buildings/wuying.jpg</file>
+        <file>buildings/yangxin.jpg</file>
+        <file>buildings/yikun.jpg</file>
+        <file>buildings/yuhua.jpg</file>
+        <file>buildings/zhaigong.jpg</file>
+        <file>buildings/yuhuayuan.jpg</file>
+        <file>buildings/qianqing.jpg</file>
+        <file>buildings/shoukang.jpg</file>
+        <file>buildings/zhonghe.jpg</file>
+        <file>buildings/wenyuan.jpg</file>
+        <file>buildings/wumen.jpg</file>
     </qresource>
     <qresource prefix="/Music">
         <file>src/bgm.mp3</file>
