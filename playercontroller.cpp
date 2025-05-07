@@ -17,7 +17,7 @@ void PlayerController::setPath(const std::vector<int> &path) {
 
     if (pathLines) {
         for (auto *line : *pathLines) {
-            line->setPen(QPen(QColor("#EEEAD9"), 2));  // 重置颜色
+            line->setPen(QPen(QColor("#E1D279"), 2));  // 重置颜色
         }
     }
     if (!path.empty()) {
