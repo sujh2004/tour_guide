@@ -56,10 +56,10 @@ MainWindow::MainWindow(QWidget *parent)
     stackedWidget->setCurrentWidget(mainPage);
     //介绍页面
     introWidget = new IntroWidget(this);
-    introWidget->setFixedSize(325, 250);
+    introWidget->setFixedSize(600, 225);
     // 设置位置：画面居中
     int x = (this->width() - introWidget->width()) / 2;
-    int y = (this->height() - introWidget->height()) / 2;
+    int y = 0;
     introWidget->move(x, y);
     introWidget->hide();
     musicplayer->playMusic("qrc:/Music/src/bgm.mp3");
@@ -627,7 +627,9 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event) {
             qDebug()<<button->text();
             for (const auto &node : nodes) {
                 if (node.getName() == button->text()) {//找到按钮对应的景点
-                    introWidget->showIntro(node);
+                    if(node.getType()==BUILDING){
+                        introWidget->showIntro(node);
+                    }
                     break;
                 }
             }
