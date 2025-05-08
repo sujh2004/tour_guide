@@ -35,24 +35,28 @@ MainWindow::MainWindow(QWidget *parent)
     scene(new QGraphicsScene(this)),
     planRouteButton(new QPushButton("规划路线", this)),
     stackedWidget(new QStackedWidget(this)),  // 初始化页面管理器
+
     puzzlePage(new PuzzleWidget(this)),  // 创建拼图游戏页面
     migongPgae(new GameMigong(this)),//创建迷宫游戏页面
+
     planner(nullptr),
     currentPathItemGroup(nullptr),
     musicplayer(new MusicPlayer(this))
 {
-    resize(650,950);  // 设置初始窗口大小为 650×950
+   // resize(650,950);  // 设置初始窗口大小为 650×950
     setCentralWidget(stackedWidget);
     playerController = new PlayerController(scene, nodes, this);
 
     // 创建主页面的布局
+    //QVBoxLayout *mainPageLayout = new QVBoxLayout();  // 创建布局
     //mainPage->setLayout(new QVBoxLayout());  // 创建布局
     //mainPage->layout()->addWidget(gameButton);  // 将游戏按钮添加到主页面的布局
 
     // 将页面添加到 QStackedWidget
     stackedWidget->addWidget(mainPage);  // 主页面
     stackedWidget->addWidget(puzzlePage);  // 拼图游戏页面
-
+    stackedWidget->addWidget(migongPgae);  // 拼图游戏页面
+    resize(650,950);  // 设置初始窗口大小为 650×950
     // 默认显示主页面
     stackedWidget->setCurrentWidget(mainPage);
     //介绍页面
@@ -752,7 +756,7 @@ void MainWindow::onGameButtonClicked() {
     // 创建新的拼图游戏窗口
     PuzzleWidget *puzzleWindow = new PuzzleWidget();  // 创建新的拼图窗口
     puzzleWindow->setWindowTitle("拼图游戏");  // 设置窗口标题
-    puzzleWindow->resize(800, 1200);  // 设置窗口大小
+   // puzzleWindow->resize(800, 1200);  // 设置窗口大小
     puzzleWindow->show();  // 显示窗口
 }
 
@@ -760,7 +764,7 @@ void MainWindow::onmigongbuttonclicked(){
     // 创建新的迷宫游戏窗口
     GameMigong *migongWindow = new GameMigong();  // 创建新的拼图窗口
     migongWindow->setWindowTitle("拼图游戏");  // 设置窗口标题
-    migongWindow->resize(800, 1200);  // 设置窗口大小
+    //migongWindow->resize(800, 900);  // 设置窗口大小
     migongWindow->show();  // 显示窗口
 }
 

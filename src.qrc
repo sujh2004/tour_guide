@@ -8,7 +8,14 @@
         <file>src/wenwu3.jpg</file>
         <file>src/wenwu2.jpg</file>
         <file>src/character.png</file>
-        <file>src/migongcharacter.jpg</file>
+        <file>src/migongcharacter.png</file>
+        <file>src/xia.png</file>
+        <file>src/xianjing.png</file>
+        <file>src/zhongdian.png</file>
+        <file>src/zuo.png</file>
+        <file>src/migongbackground.jpg</file>
+        <file>src/up.png</file>
+        <file>src/right.png</file>
     </qresource>
     <qresource prefix="/Pamela">
         <file>image/btn_exit.png</file>

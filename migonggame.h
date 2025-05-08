@@ -1,13 +1,10 @@
-#ifndef GAMEMIGONG_H
-#define GAMEMIGONG_H
+#ifndef MIGONGGAME_H
+#define MIGONGGAME_H
 
 #include <QWidget>
-#include <QKeyEvent>
-#include <QTimer>
-#include <QList>
-#include <QMouseEvent>
-#include <QPushButton>
-#include <QMessageBox>
+#include <QRect>
+#include <QPixmap>
+#include <QVector>
 
 class DraggableButton : public QWidget
 {
@@ -16,8 +13,13 @@ class DraggableButton : public QWidget
 public:
     explicit DraggableButton(QWidget *parent = nullptr);
     ~DraggableButton();
-    void setText(const QString &text);
-    void setDraggable(bool draggable);
+
+    bool isDragging;
+    bool draggable;
+    QPixmap buttonImage;
+
+    void setImage(const QPixmap &image);  // 设置按钮图像
+    QPixmap getButtonImage() const;  // 获取按钮图像
 
 protected:
     void paintEvent(QPaintEvent *event) override;
@@ -25,13 +27,9 @@ protected:
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
 
-public:
-    QString buttonText;
-
 private:
-    bool isDragging;
+
     QPoint dragStartPos;
-    bool draggable;
 };
 
 class GameMigong : public QWidget
@@ -44,31 +42,32 @@ public:
 
 protected:
     void paintEvent(QPaintEvent *event) override;
-    void keyPressEvent(QKeyEvent *event) override;
 
 private:
     void movePlayer();
     void checkCollisions();
     void checkButtonCollisions();
-    void spawnButtons();
+    void loadLevel(int level);
+    void spawnButtons(int level);
     void startGame();
+    void restart();
     void showSuccessMessage();
-    void loadLevel(int level);  // 加载指定关卡
-
+    void startNewLevel(int level);
+    void setLevel(int level);
+    void buttonposition();
     QRect player;
     QPoint playerDirection;
-    QList<DraggableButton*> buttons;
+    QPixmap playerPixmap;
+    QPixmap obstaclePixmap;
+    QPixmap targetPixmap;
     QRect target;
-    QList<QRect> obstacles;
+    QVector<QRect> obstacles;
+    QVector<DraggableButton *> buttons;
+    QTimer *timer;
     bool isGameOver;
     bool isGameStarted;
     int moveStep;
-    int currentLevel;  // 当前关卡
-    QTimer *timer;
-
-    QPixmap playerPixmap;  // 小人图像
-    QPixmap obstaclePixmap;  // 障碍物图像
-    QPixmap targetPixmap;  // 终点图像
+    int currentLevel;
 };
 
-#endif // GAMEMIGONG_H
+#endif // MIGONGGAME_H

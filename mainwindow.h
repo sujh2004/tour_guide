@@ -51,6 +51,7 @@ protected:
 
 private:
     //QWidget *centralWidget;   // 中央部件
+
     QWidget *mainPage;  // 主页面
     QGraphicsView *graphicsView; // 显示地图的视图
     QGraphicsScene *scene;    // 场景，管理所有图形项
@@ -58,10 +59,10 @@ private:
     QPushButton *gameButton;  // 进入拼图游戏的按钮
     QPushButton *showFavoriteButton; //进入收藏夹的按钮
     PlayerController *playerController;//添加人物
+
     QStackedWidget *stackedWidget;  // 页面管理器
     PuzzleWidget *puzzlePage;  // 拼图游戏页面
     GameMigong *migongPgae;//迷宫游戏页面
-
 
     IntroWidget* introWidget;//景点介绍页面
     QList<QPushButton*> buildingButtons;  // 管理所有建筑按钮
