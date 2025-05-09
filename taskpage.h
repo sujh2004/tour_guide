@@ -7,8 +7,6 @@
 #include <QGraphicsPixmapItem>
 #include <QPushButton>
 #include <QKeyEvent>
-#include <QDir>
-#include <QDateTime>
 
 class TaskPage : public QDialog
 {
@@ -16,24 +14,28 @@ class TaskPage : public QDialog
 public:
     explicit TaskPage(QWidget *parent = nullptr);
 
-    /** 设置背景图（终点建筑） */
-    void setBuildingImage(const QString &imagePath);
-    /** 设置小人图；默认按 0.05 倍缩放 */
-    void setPlayerImage(const QString &imagePath, qreal scale = 0.05);
-    /** 把景点名传进来，用于拼接截图文件名 */
+    void setBuildingImage(const QString &imagePath);                // 背景
+    void setPlayerImage(const QString &imagePath, qreal scale = 1); // 小人
     void setSceneInfo(const QString &name);
 
 signals:
-    void backToMain();               // 通知主界面返回
+    void backToMain();
 
 protected:
-    void keyPressEvent(QKeyEvent *event) override;   // WSAD 控制小人
+    void keyPressEvent(QKeyEvent *event) override;
+    void resizeEvent(QResizeEvent *e)    override;
+
+    void showEvent(QShowEvent *event) override;   // <— 新增
+
 
 private slots:
-    void onShotClicked();            // 拍照
-    void onBackClicked();            // 返回
+    void onShotClicked();
+    void onBackClicked();
 
 private:
+    static constexpr int kWidth  = 800;
+    static constexpr int kHeight = 500;
+
     QString               sceneName;
     QGraphicsView        *view        {nullptr};
     QGraphicsScene       *scene       {nullptr};
