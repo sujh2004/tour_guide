@@ -7,6 +7,9 @@
 #include "node.h"
 
 class QGraphicsScene;
+//signals:
+
+
 
 class PlayerController : public QObject {
     Q_OBJECT
@@ -18,6 +21,10 @@ public:
     void moveForward();                           // 向前移动
     void moveBackward();                          // 向后移动
     void reset();                                 // 重置角色
+
+
+signals:
+    void reachedDestination(int nodeId);  /*** 带参数 ***/
 
 private:
     void moveTo(int index);                       // 移动到路径中的某个节点
@@ -31,6 +38,8 @@ private:
 
 public:
     void setPathLines(QVector<QGraphicsLineItem*> *lines);  // 设置路径线引用
+
+
 };
 
 #endif // PLAYERCONTROLLER_H

@@ -22,7 +22,12 @@
 #include "playercontroller.h" //添加人物
 #include "introwidget.h"
 #include "musicplayer.h"
+
 #include "migonggame.h"
+
+#include"taskpage.h"
+#include "backpackpage.h"  // 添加背包页面头文件
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -42,12 +47,23 @@ private slots:
     void onPlanRouteClicked();
     void openDeviceSearchWindow();  // 添加此函数声明
     void onGameButtonClicked();  // 点击拼图游戏按钮的槽函数
+
     void onmigongbuttonclicked();//点击迷宫游戏
+    void openBackpackPage();
+    void openTaskPage(int nodeId);   // 带参数
+    void closeTaskPage();            // 关弹窗
+
+
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;
     bool eventFilter(QObject *watched, QEvent *event) override;//For 悬浮景点按钮页面介绍
+
+private:
+    QString currentDestination;  // 或根据你的需要使用适当的类型，例如 ID
+
+
 
 private:
     //QWidget *centralWidget;   // 中央部件
@@ -65,6 +81,12 @@ private:
     GameMigong *migongPgae;//迷宫游戏页面
 
     IntroWidget* introWidget;//景点介绍页面
+
+
+    BackpackPage *backpackPage;  // 背包页面
+    TaskPage *taskPage;  // 任务页面
+    QPushButton *backpackButton;  // 背包按钮
+
     QList<QPushButton*> buildingButtons;  // 管理所有建筑按钮
     std::vector<Node> nodes;  // 存储节点
     std::vector<Edge> edges;  // 存储边

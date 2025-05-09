@@ -20,7 +20,7 @@
 #include <QStackedWidget>
 #include <QVBoxLayout>
 #include <QDialog>  // 使用 QDialog 作为新的窗口类型
-#include <QSettings>>
+#include <QSettings>
 #include <QFont>
 #include <QFontDatabase>
 
@@ -41,6 +41,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     planner(nullptr),
     currentPathItemGroup(nullptr),
+
+    taskPage(nullptr),  // 初始化为空
+    backpackPage(nullptr),  // 初始化为空
+    backpackButton(nullptr),
     musicplayer(new MusicPlayer(this))
 {
    // resize(650,950);  // 设置初始窗口大小为 650×950
@@ -75,7 +79,23 @@ MainWindow::MainWindow(QWidget *parent)
     this->setFocusPolicy(Qt::StrongFocus);
     // 创建路径规划器
     planner = new RoutePlanner(nodes, edges);
+    connect(playerController, &PlayerController::reachedDestination, this, &MainWindow::openTaskPage);
+
+    // 背包按钮设置
+    backpackButton = new QPushButton("背包", this);
+    backpackButton->resize(100, 50);
+    backpackButton->move(550, 50);  // 设置位置
+    connect(backpackButton, &QPushButton::clicked,
+            this, &MainWindow::openBackpackPage);   // ← 新增
+    backpackButton->raise();                       // 保证按钮在顶层（可选）
+
+    /* 构造函数里把旧连接换掉 */
+    connect(playerController, &PlayerController::reachedDestination,
+            this, &MainWindow::openTaskPage);
+
+
 }
+
 
 MainWindow::~MainWindow() {
     //删除收藏夹记录
@@ -84,7 +104,33 @@ MainWindow::~MainWindow() {
     settings.remove("");
     settings.endGroup();
     delete planner;
+    delete playerController;
+
+    delete backpackPage;
 }
+/*** 新实现 ***/
+void MainWindow::openTaskPage(int nodeId)
+{
+    const Node &n = nodes[nodeId];
+    taskPage = new TaskPage;                // **不要传 this** → 独立窗口
+    taskPage->setBuildingImage(n.getImagePath());
+    taskPage->setPlayerImage(":/images/src/character.png",0.05);
+    taskPage->setSceneInfo(n.getName());          /*** 新增 – 传景点名 ***/
+
+    // 弹窗关闭后把指针清空，绝不手动 delete
+    connect(taskPage,&QDialog::finished,this,[=]{ taskPage=nullptr; });
+
+    taskPage->show();
+}
+
+void MainWindow::closeTaskPage() {
+    if (taskPage) {
+        taskPage->close();
+        delete taskPage;
+        taskPage = nullptr;
+    }
+}
+
 
 void MainWindow::creategamebotton() {
     // 创建游戏按钮
@@ -147,6 +193,12 @@ void MainWindow::setupUI() {
     // 连接按钮点击事件
     connect(showFavoriteButton, &QPushButton::clicked, this, &MainWindow::on_showFavoriteButton_clicked);
      //------收藏夹入口 END-----
+}
+void MainWindow::openBackpackPage() {
+    // 打开背包页面，显示所有拍摄的图片
+    backpackPage = new BackpackPage(this);
+    backpackPage->resize(600, 800);
+    backpackPage->show();
 }
 
 void MainWindow::initData() {
@@ -417,17 +469,7 @@ void MainWindow::drawMap() {
     onPlanRouteClicked();
     creategamebotton();
     createmigonggamebotton();
-    // 再绘制节点（小圆）
-    /*QPen nodePen(Qt::black, 1);
-    QBrush nodeBrush(Qt::blue);
-    for (const auto &node : nodes) {
 
-        scene->addEllipse(node.getX() - 5, node.getY() - 5, 10, 10, nodePen, nodeBrush);
-        //QGraphicsTextItem *text = scene->addText(node.getName());
-        //text->setPos(node.getX() + 5, node.getY() + 5);
-    }
-
-*/
 }
 
 void MainWindow::onPlanRouteClicked() {

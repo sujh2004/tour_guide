@@ -10,6 +10,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    backpackpage.cpp \
     devicesearchwindow.cpp \
     edge.cpp \
     favoritewidget.cpp \
@@ -22,9 +23,11 @@ SOURCES += \
     nodelist.cpp \
     playercontroller.cpp \
     puzzlewidget.cpp \
-    routeplanner.cpp
+    routeplanner.cpp \
+    taskpage.cpp
 
 HEADERS += \
+    backpackpage.h \
     devicesearchwindow.h \
     edge.h \
     favoritewidget.h \
@@ -36,7 +39,8 @@ HEADERS += \
     nodelist.h \
     playercontroller.h \
     puzzlewidget.h \
-    routeplanner.h
+    routeplanner.h \
+    taskpage.h
 
 FORMS += \
     favoritewidget.ui \

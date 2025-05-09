@@ -42,7 +42,13 @@ void PlayerController::moveForward() {
             (*pathLines)[currentIndex - 1]->setPen(QPen(Qt::gray, 1));
         }
     }
+
+    if (currentIndex == currentPath.size() - 1) {
+        emit reachedDestination(currentPath.back());  /*** 传终点 ***/
+    }
+
 }
+
 
 void PlayerController::moveBackward() {
     if (currentIndex > 0) {
@@ -65,3 +71,4 @@ void PlayerController::reset() {
     currentPath.clear();
     currentIndex = 0;
 }
+
