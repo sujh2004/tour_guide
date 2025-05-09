@@ -14,8 +14,6 @@
         <file>src/zhongdian.png</file>
         <file>src/zuo.png</file>
         <file>src/migongbackground.jpg</file>
-        <file>src/up.png</file>
-        <file>src/right.png</file>
     </qresource>
     <qresource prefix="/Pamela">
         <file>image/btn_exit.png</file>
