@@ -16,6 +16,7 @@
         <file>src/migongbackground.jpg</file>
         <file>src/xiangyou.png</file>
         <file>src/xiangshang.png</file>
+
     </qresource>
     <qresource prefix="/Pamela">
         <file>image/btn_exit.png</file>

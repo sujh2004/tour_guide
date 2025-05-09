@@ -6,6 +6,8 @@
 #include <QPixmap>
 #include <QVector>
 
+
+
 class DraggableButton : public QWidget
 {
     Q_OBJECT
@@ -14,12 +16,25 @@ public:
     explicit DraggableButton(QWidget *parent = nullptr);
     ~DraggableButton();
 
+    enum DirectionType {
+        None,
+        Up,
+        Down,
+        Left,
+        Right
+    };
+
     bool isDragging;
     bool draggable;
     QPixmap buttonImage;
-
+    DraggableButton::DirectionType direction = DraggableButton::None; // 新增字段
     void setImage(const QPixmap &image);  // 设置按钮图像
     QPixmap getButtonImage() const;  // 获取按钮图像
+
+    void setDirection(DirectionType dir) { direction = dir; }
+    DirectionType getDirection() const { return direction; }
+
+
 
 protected:
     void paintEvent(QPaintEvent *event) override;
@@ -64,6 +79,7 @@ private:
     QVector<QRect> obstacles;
     QVector<DraggableButton *> buttons;
     QTimer *timer;
+
     bool isGameOver;
     bool isGameStarted;
     int moveStep;
