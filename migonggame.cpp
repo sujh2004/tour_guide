@@ -23,10 +23,10 @@ void DraggableButton::setImage(const QPixmap &image)
     update();  // 更新界面
 }
 
-//QPixmap DraggableButton::getButtonImage() const
-//{
-   // return buttonImage;  // 返回按钮图像
-//}
+QPixmap DraggableButton::getButtonImage() const
+{
+    return buttonImage;  // 返回按钮图像
+}
 
 void DraggableButton::paintEvent(QPaintEvent *event)
 {
@@ -165,28 +165,29 @@ void GameMigong::checkCollisions()
 
 void GameMigong::checkButtonCollisions()
 {
-    // 遍历所有按钮并检查与玩家的碰撞
-    for (DraggableButton *button : buttons) {
-        // 检查按钮是否与玩家碰撞
-      //  qDebug() << "Player position: " << player.topLeft();
-   //QPixmap buttonImage = button->getButtonImage();
-        //qDebug() << buttonImage.cacheKey();
-        if (button->geometry().contains(player.center())) {
-            // 使用 cacheKey() 比较按钮的图片
-            //qDebug() << button->buttonImage.cacheKey();
-            if (button->buttonImage.cacheKey()== QPixmap(":/images/src/right.png").cacheKey()) {
-                playerDirection = QPoint(0, -1);  // 向上移动
-                qDebug() << button->buttonImage.cacheKey();
-            } else if (button->buttonImage.cacheKey() == QPixmap(":/images/src/xia.png").cacheKey()) {
-                playerDirection = QPoint(0, 1);  // 向下移动
-            } else if (button->buttonImage.cacheKey() == QPixmap(":/images/src/zuo.png").cacheKey()) {
-                playerDirection = QPoint(-1, 0);  // 向左移动
-            } else if (button->buttonImage.cacheKey() == QPixmap(":/images/src/right.png").cacheKey()) {
-                playerDirection = QPoint(1, 0);  // 向右移动
+
+        // 遍历所有按钮并检查与玩家的碰撞
+        for (DraggableButton *button : buttons) {
+            // 检查按钮是否与玩家碰撞
+            if (player.intersects(button->geometry())) {
+                // 如果按钮的区域包含玩家的中心点，表示玩家正在点击按钮
+                if (button->geometry().contains(player.center())) {
+                    if (button->buttonImage.cacheKey()== QPixmap(":/images/src/xiangshang.png").cacheKey()) {
+                        playerDirection = QPoint(0, -1);  // 向上移动
+                        qDebug() << button->buttonImage.cacheKey();
+                    } else if (button->buttonImage.cacheKey() == QPixmap(":/images/src/xia.png").cacheKey()) {
+                        playerDirection = QPoint(0, 1);  // 向下移动
+                    } else if (button->buttonImage.cacheKey() == QPixmap(":/images/src/zuo.png").cacheKey()) {
+                        playerDirection = QPoint(-1, 0);  // 向左移动
+                    } else if (button->buttonImage.cacheKey() == QPixmap(":/images/src/xiangyou.png").cacheKey()) {
+                        playerDirection = QPoint(1, 0);  // 向右移动
+                    }
+                }
             }
         }
     }
-}
+
+
 void GameMigong::loadLevel(int level)
 {
     // 清空上一关的按钮
@@ -218,8 +219,8 @@ void GameMigong::spawnButtons(int level)
     // 清空按钮列表
    // buttons.clear();
 
-    QPixmap upPixmap(":/images/src/up.png");  // 向上按钮图片
-    QPixmap rightPixmap(":/images/src/right.png");  // 向右按钮图片
+    QPixmap upPixmap(":/images/src/xiangshang.png");  // 向上按钮图片
+    QPixmap rightPixmap(":/images/src/xiangyou.png");  // 向右按钮图片
     QPixmap downPixmap(":/images/src/xia.png");  // 向下按钮图片
     QPixmap leftPixmap(":/images/src/zuo.png");  // 向左按钮图片
 
