@@ -415,7 +415,7 @@ void MainWindow::drawMap() {
     }
 
     onPlanRouteClicked();
-     creategamebotton();
+    creategamebotton();
     createmigonggamebotton();
     // 再绘制节点（小圆）
     /*QPen nodePen(Qt::black, 1);

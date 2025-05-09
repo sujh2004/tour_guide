@@ -73,7 +73,7 @@ GameMigong::GameMigong(QWidget *parent)
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &GameMigong::movePlayer);
     timer->start(100);  // 每100毫秒更新一次小人位置
-buttonposition();
+    //buttonposition();
     loadLevel(currentLevel);  // 加载第一关
 
     // 添加开始游戏按钮
@@ -171,11 +171,14 @@ void GameMigong::checkButtonCollisions()
             // 检查按钮是否与玩家碰撞
             if (player.intersects(button->geometry())) {
                 // 如果按钮的区域包含玩家的中心点，表示玩家正在点击按钮
+
                 if (button->geometry().contains(player.center())) {
+                    qDebug() << button->buttonImage.cacheKey();
                     if (button->buttonImage.cacheKey()== QPixmap(":/images/src/xiangshang.png").cacheKey()) {
                         playerDirection = QPoint(0, -1);  // 向上移动
                         qDebug() << button->buttonImage.cacheKey();
                     } else if (button->buttonImage.cacheKey() == QPixmap(":/images/src/xia.png").cacheKey()) {
+                        qDebug() << button->buttonImage.cacheKey();
                         playerDirection = QPoint(0, 1);  // 向下移动
                     } else if (button->buttonImage.cacheKey() == QPixmap(":/images/src/zuo.png").cacheKey()) {
                         playerDirection = QPoint(-1, 0);  // 向左移动
@@ -247,7 +250,10 @@ void GameMigong::spawnButtons(int level)
         buttons.append(downButton);
         //QPixmap buttonImage2 = downButton->getButtonImage();
         //qDebug() << buttonImage2.cacheKey();
-
+        DraggableButton *leftButton1 = new DraggableButton(this);
+        leftButton1->setGeometry(500, 100, 50, 50);
+        leftButton1->setImage(leftPixmap);
+        buttons.append(leftButton1);
 
 
     }
