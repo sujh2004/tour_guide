@@ -82,16 +82,32 @@ MainWindow::MainWindow(QWidget *parent)
     connect(playerController, &PlayerController::reachedDestination, this, &MainWindow::openTaskPage);
 
     // 背包按钮设置
-    backpackButton = new QPushButton("背包", this);
-    backpackButton->resize(100, 50);
-    backpackButton->move(550, 50);  // 设置位置
-    connect(backpackButton, &QPushButton::clicked,
-            this, &MainWindow::openBackpackPage);   // ← 新增
-    backpackButton->raise();                       // 保证按钮在顶层（可选）
+    /* === 背包图标按钮 === */
+    backpackButton = new QPushButton(this);
 
-    /* 构造函数里把旧连接换掉 */
-    connect(playerController, &PlayerController::reachedDestination,
-            this, &MainWindow::openTaskPage);
+    // ① 读入 PNG 图；把路径换成你的资源路径
+    QPixmap icon(":/images/src/backpack.png");
+
+    /* ② 按需要缩放：64×64 像素左右就够，想大就改数字 */
+    icon = icon.scaled(64, 64,
+                       Qt::KeepAspectRatio,
+                       Qt::SmoothTransformation);
+
+    /* ③ 把 QPixmap 塞进按钮，去掉边框背景 */
+    backpackButton->setIcon(QIcon(icon));
+    backpackButton->setIconSize(icon.size());
+    backpackButton->setFlat(true);                 // 无边框
+    backpackButton->setStyleSheet("background:transparent;");
+
+    /* ④ 设置在主界面的坐标（x, y = 550, 130） */
+    backpackButton->setGeometry(550, 130,
+                                icon.width(), icon.height());
+
+    /* ⑤ 点击之后还是打开背包页面 */
+    connect(backpackButton, &QPushButton::clicked,
+            this, &MainWindow::openBackpackPage);
+
+    backpackButton->raise();                       // 让它在最上层
 
 
 }
