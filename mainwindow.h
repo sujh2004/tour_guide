@@ -52,7 +52,7 @@ private slots:
     void openBackpackPage();
     void openTaskPage(int nodeId);   // 带参数
     void closeTaskPage();            // 关弹窗
-
+    void showStyledMessage(QString title, QString text, QMessageBox::Icon icon);
 
 
 protected:
@@ -105,6 +105,7 @@ private:
     QGraphicsItemGroup *currentPathItemGroup;  // 存储当前高亮路径的图形项组
     MusicPlayer *musicplayer;
     QAudioOutput *audioOutput;
+    QMessageBox *msgBox;
 
     void setupUI();  // 设置界面
     void initData(); // 初始化数据（节点、边）
