@@ -35,13 +35,10 @@ MainWindow::MainWindow(QWidget *parent)
     scene(new QGraphicsScene(this)),
     planRouteButton(new QPushButton("规划路线", this)),
     stackedWidget(new QStackedWidget(this)),  // 初始化页面管理器
-
     puzzlePage(new PuzzleWidget(this)),  // 创建拼图游戏页面
     migongPgae(new GameMigong(this)),//创建迷宫游戏页面
-
     planner(nullptr),
     currentPathItemGroup(nullptr),
-
     taskPage(nullptr),  // 初始化为空
     backpackPage(nullptr),  // 初始化为空
     backpackButton(nullptr),
@@ -50,7 +47,9 @@ MainWindow::MainWindow(QWidget *parent)
    // resize(650,950);  // 设置初始窗口大小为 650×950
     setCentralWidget(stackedWidget);
     playerController = new PlayerController(scene, nodes, this);
-
+    QMessageBox msgBox(this);
+    msgBox.setIcon(QMessageBox::Information);
+    msgBox.setStyleSheet("QMessageBox { background-color: #C7A47A; }");
     // 创建主页面的布局
     //QVBoxLayout *mainPageLayout = new QVBoxLayout();  // 创建布局
     //mainPage->setLayout(new QVBoxLayout());  // 创建布局
@@ -59,7 +58,7 @@ MainWindow::MainWindow(QWidget *parent)
     // 将页面添加到 QStackedWidget
     stackedWidget->addWidget(mainPage);  // 主页面
     stackedWidget->addWidget(puzzlePage);  // 拼图游戏页面
-    stackedWidget->addWidget(migongPgae);  // 拼图游戏页面
+    stackedWidget->addWidget(migongPgae);  // 迷宫游戏页面
     resize(650,950);  // 设置初始窗口大小为 650×950
     // 默认显示主页面
     stackedWidget->setCurrentWidget(mainPage);
@@ -113,6 +112,7 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 
+
 MainWindow::~MainWindow() {
     //删除收藏夹记录
     QSettings settings("MyApp", "TourGuide");
@@ -147,6 +147,17 @@ void MainWindow::closeTaskPage() {
     }
 }
 
+void MainWindow::showStyledMessage(QString title, QString text, QMessageBox::Icon icon) {
+    QMessageBox msgBox(this);
+    msgBox.setWindowTitle(title);
+    msgBox.setText(text);
+    msgBox.setIcon(icon);
+    msgBox.setStyleSheet("QMessageBox { background-color: #F8F0E3; color: black; }"
+                         "QLabel { color: black; }"
+                         "QPushButton { background-color: #E1D279; color: black; }");
+    msgBox.addButton(QMessageBox::Ok);
+    msgBox.exec();
+}
 
 void MainWindow::creategamebotton() {
     // 创建游戏按钮
@@ -606,7 +617,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event) {
           case 0:  // 进入寻路模式
             maptype = 1;
             onPlanRouteClicked();
-             QMessageBox::information(this, "寻路模式","您已进入寻路模式");
+            showStyledMessage("寻路模式", "您已进入寻路模式: ", QMessageBox::Information);
+            //QMessageBox::information(this, "寻路模式","您已进入寻路模式");
             break;
           case 1:
             // 退出寻路模式
@@ -624,11 +636,12 @@ void MainWindow::onNodeButtonClicked(int nodeId) {
     if (startPoint == -1) {
         // 设置起点
         startPoint = nodeId;
-        QMessageBox::information(this, "选择起点", "已选择起点: " + nodes[nodeId].getName());
+        showStyledMessage("选择起点", "已选择起点: " + nodes[nodeId].getName(), QMessageBox::Information);
     } else if (endPoint == -1) {
         // 设置终点
         endPoint = nodeId;
-        QMessageBox::information(this, "选择终点", "已选择终点: " + nodes[nodeId].getName());
+        showStyledMessage("选择终点", "已选择终点: " + nodes[nodeId].getName(), QMessageBox::Information);
+        //QMessageBox::information(this, "选择终点", "已选择终点: " + nodes[nodeId].getName());
 
         // 询问用户是否选择途经点
         bool ok;

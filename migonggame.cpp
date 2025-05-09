@@ -173,19 +173,6 @@ void GameMigong::checkButtonCollisions()
                 // 如果按钮的区域包含玩家的中心点，表示玩家正在点击按钮
 
                 if (button->geometry().contains(player.center())) {
-
-                    qDebug() << button->buttonImage.cacheKey();
-                    if (button->buttonImage.cacheKey()== QPixmap(":/images/src/xiangshang.png").cacheKey()) {
-                        playerDirection = QPoint(0, -1);  // 向上移动
-                        qDebug() << button->buttonImage.cacheKey();
-                    } else if (button->buttonImage.cacheKey() == QPixmap(":/images/src/xia.png").cacheKey()) {
-                        qDebug() << button->buttonImage.cacheKey();
-                        playerDirection = QPoint(0, 1);  // 向下移动
-                    } else if (button->buttonImage.cacheKey() == QPixmap(":/images/src/zuo.png").cacheKey()) {
-                        playerDirection = QPoint(-1, 0);  // 向左移动
-                    } else if (button->buttonImage.cacheKey() == QPixmap(":/images/src/xiangyou.png").cacheKey()) {
-                        playerDirection = QPoint(1, 0);  // 向右移动
-
                     DraggableButton::DirectionType dir = button->getDirection();
                     switch (dir) {
                     case DraggableButton::Up:
@@ -203,7 +190,7 @@ void GameMigong::checkButtonCollisions()
                     default:
                         break;
 
-                    }
+
                 }
             }
         }
