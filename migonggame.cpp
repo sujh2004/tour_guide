@@ -23,10 +23,10 @@ void DraggableButton::setImage(const QPixmap &image)
     update();  // 更新界面
 }
 
-//QPixmap DraggableButton::getButtonImage() const
-//{
-   // return buttonImage;  // 返回按钮图像
-//}
+QPixmap DraggableButton::getButtonImage() const
+{
+    return buttonImage;  // 返回按钮图像
+}
 
 void DraggableButton::paintEvent(QPaintEvent *event)
 {
@@ -165,28 +165,36 @@ void GameMigong::checkCollisions()
 
 void GameMigong::checkButtonCollisions()
 {
-    // 遍历所有按钮并检查与玩家的碰撞
-    for (DraggableButton *button : buttons) {
-        // 检查按钮是否与玩家碰撞
-      //  qDebug() << "Player position: " << player.topLeft();
-   //QPixmap buttonImage = button->getButtonImage();
-        //qDebug() << buttonImage.cacheKey();
-        if (button->geometry().contains(player.center())) {
-            // 使用 cacheKey() 比较按钮的图片
-            //qDebug() << button->buttonImage.cacheKey();
-            if (button->buttonImage.cacheKey()== QPixmap(":/images/src/right.png").cacheKey()) {
-                playerDirection = QPoint(0, -1);  // 向上移动
-                qDebug() << button->buttonImage.cacheKey();
-            } else if (button->buttonImage.cacheKey() == QPixmap(":/images/src/xia.png").cacheKey()) {
-                playerDirection = QPoint(0, 1);  // 向下移动
-            } else if (button->buttonImage.cacheKey() == QPixmap(":/images/src/zuo.png").cacheKey()) {
-                playerDirection = QPoint(-1, 0);  // 向左移动
-            } else if (button->buttonImage.cacheKey() == QPixmap(":/images/src/right.png").cacheKey()) {
-                playerDirection = QPoint(1, 0);  // 向右移动
+
+        // 遍历所有按钮并检查与玩家的碰撞
+        for (DraggableButton *button : buttons) {
+            // 检查按钮是否与玩家碰撞
+            if (player.intersects(button->geometry())) {
+                // 如果按钮的区域包含玩家的中心点，表示玩家正在点击按钮
+                if (button->geometry().contains(player.center())) {
+                    DraggableButton::DirectionType dir = button->getDirection();
+                    switch (dir) {
+                    case DraggableButton::Up:
+                        playerDirection = QPoint(0, -1);
+                        break;
+                    case DraggableButton::Down:
+                        playerDirection = QPoint(0, 1);
+                        break;
+                    case DraggableButton::Left:
+                        playerDirection = QPoint(-1, 0);
+                        break;
+                    case DraggableButton::Right:
+                        playerDirection = QPoint(1, 0);
+                        break;
+                    default:
+                        break;
+                    }
+                }
             }
         }
     }
-}
+
+
 void GameMigong::loadLevel(int level)
 {
     // 清空上一关的按钮
@@ -218,8 +226,8 @@ void GameMigong::spawnButtons(int level)
     // 清空按钮列表
    // buttons.clear();
 
-    QPixmap upPixmap(":/images/src/up.png");  // 向上按钮图片
-    QPixmap rightPixmap(":/images/src/right.png");  // 向右按钮图片
+    QPixmap upPixmap(":/images/src/xiangshang.png");  // 向上按钮图片
+    QPixmap rightPixmap(":/images/src/xiangyou.png");  // 向右按钮图片
     QPixmap downPixmap(":/images/src/xia.png");  // 向下按钮图片
     QPixmap leftPixmap(":/images/src/zuo.png");  // 向左按钮图片
 
@@ -230,6 +238,7 @@ void GameMigong::spawnButtons(int level)
         DraggableButton *upButton = new DraggableButton(this);
         upButton->setGeometry(100, 100, 50, 50);
         upButton->setImage(upPixmap);
+        upButton->setDirection(DraggableButton::Up); // 设置方向
         buttons.append(upButton);
        // QPixmap buttonImage = upButton->getButtonImage();
          //qDebug() << buttonImage.cacheKey();
@@ -237,12 +246,14 @@ void GameMigong::spawnButtons(int level)
          DraggableButton *rightButton = new DraggableButton(this);
         rightButton->setGeometry(200, 100, 50, 50);
         rightButton->setImage(rightPixmap);
+        rightButton->setDirection(DraggableButton::Right);
         buttons.append(rightButton);
 
 
         DraggableButton *downButton = new DraggableButton(this);
         downButton->setGeometry(300, 100, 50, 50);
         downButton->setImage(downPixmap);
+        downButton->setDirection(DraggableButton::Down);
         buttons.append(downButton);
         //QPixmap buttonImage2 = downButton->getButtonImage();
         //qDebug() << buttonImage2.cacheKey();
@@ -256,16 +267,19 @@ void GameMigong::spawnButtons(int level)
         DraggableButton *rightButton2 = new DraggableButton(this);
         rightButton2->setGeometry(400, 100, 50, 50);
         rightButton2->setImage(rightPixmap);
+        rightButton2->setDirection(DraggableButton::Right);
         buttons.append(rightButton2);
 
         DraggableButton *leftButton1 = new DraggableButton(this);
         leftButton1->setGeometry(500, 100, 50, 50);
         leftButton1->setImage(leftPixmap);
+        leftButton1->setDirection(DraggableButton::Left);
         buttons.append(leftButton1);
 
         DraggableButton *leftButton2 = new DraggableButton(this);
         leftButton2->setGeometry(600, 100, 50, 50);
         leftButton2->setImage(leftPixmap);
+        leftButton2->setDirection(DraggableButton::Left);
         buttons.append(leftButton2);
 
     }
