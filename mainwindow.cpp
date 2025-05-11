@@ -124,7 +124,7 @@ MainWindow::~MainWindow() {
 
     delete backpackPage;
 }
-/*** 新实现 ***/
+
 void MainWindow::openTaskPage(int nodeId)
 {
     const Node &n = nodes[nodeId];
@@ -132,6 +132,22 @@ void MainWindow::openTaskPage(int nodeId)
     taskPage->setBuildingImage(n.getImagePath());
     taskPage->setPlayerImage(":/images/src/character.png",0.05);
     taskPage->setSceneInfo(n.getName());          /*** 新增 – 传景点名 ***/
+
+    // Move game buttons based on the destination
+    if (n.getName() == "太和殿") {
+        // Move 拼图游戏 button to taskPage
+        QPushButton *gameButton = new QPushButton("进入拼图游戏", taskPage);
+        gameButton->resize(100, 50);  // Set button size
+        gameButton->move(600, 0);     // Set button position
+        connect(gameButton, &QPushButton::clicked, this, &MainWindow::onGameButtonClicked);
+    }
+    else if (n.getName() == "文渊阁") {
+        // Move 迷宫游戏 button to taskPage
+        QPushButton *gameButton = new QPushButton("进入迷宫游戏", taskPage);
+        gameButton->resize(100, 50);  // Set button size
+        gameButton->move(600, 0);     // Set button position
+        connect(gameButton, &QPushButton::clicked, this, &MainWindow::onmigongbuttonclicked);
+    }
 
     // 弹窗关闭后把指针清空，绝不手动 delete
     connect(taskPage,&QDialog::finished,this,[=]{ taskPage=nullptr; });
@@ -494,8 +510,7 @@ void MainWindow::drawMap() {
     }
 
     onPlanRouteClicked();
-    creategamebotton();
-    createmigonggamebotton();
+
 
 }
 
