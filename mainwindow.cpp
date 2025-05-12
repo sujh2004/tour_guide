@@ -37,11 +37,11 @@ MainWindow::MainWindow(QWidget *parent)
     stackedWidget(new QStackedWidget(this)),  // 初始化页面管理器
     puzzlePage(new PuzzleWidget(this)),  // 创建拼图游戏页面
     migongPgae(new GameMigong(this)),//创建迷宫游戏页面
+    backpackPage(nullptr),  // 初始化为空
+    taskPage(nullptr),  // 初始化为空
+    backpackButton(nullptr),
     planner(nullptr),
     currentPathItemGroup(nullptr),
-    taskPage(nullptr),  // 初始化为空
-    backpackPage(nullptr),  // 初始化为空
-    backpackButton(nullptr),
     musicplayer(new MusicPlayer(this))
 {
    // resize(650,950);  // 设置初始窗口大小为 650×950

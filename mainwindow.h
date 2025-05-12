@@ -75,18 +75,13 @@ private:
     QPushButton *gameButton;  // 进入拼图游戏的按钮
     QPushButton *showFavoriteButton; //进入收藏夹的按钮
     PlayerController *playerController;//添加人物
-
     QStackedWidget *stackedWidget;  // 页面管理器
     PuzzleWidget *puzzlePage;  // 拼图游戏页面
     GameMigong *migongPgae;//迷宫游戏页面
-
     IntroWidget* introWidget;//景点介绍页面
-
-
     BackpackPage *backpackPage;  // 背包页面
     TaskPage *taskPage;  // 任务页面
     QPushButton *backpackButton;  // 背包按钮
-
     QList<QPushButton*> buildingButtons;  // 管理所有建筑按钮
     std::vector<Node> nodes;  // 存储节点
     std::vector<Edge> edges;  // 存储边
@@ -97,11 +92,8 @@ private:
     QTimer* timer = nullptr;  // 定时器
     int startPoint = -1;  // 起点
     int endPoint = -1;    // 终点
-
     int maptype=0;
-
     std::vector<int> viaPoints;
-
     QGraphicsItemGroup *currentPathItemGroup;  // 存储当前高亮路径的图形项组
     MusicPlayer *musicplayer;
     QAudioOutput *audioOutput;

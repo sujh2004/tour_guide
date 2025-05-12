@@ -259,10 +259,10 @@ void GameMigong::spawnButtons(int level)
         buttons.append(downButton);
         //QPixmap buttonImage2 = downButton->getButtonImage();
         //qDebug() << buttonImage2.cacheKey();
-        DraggableButton *leftButton1 = new DraggableButton(this);
-        leftButton1->setGeometry(500, 100, 50, 50);
-        leftButton1->setImage(leftPixmap);
-        buttons.append(leftButton1);
+        // DraggableButton *leftButton1 = new DraggableButton(this);
+        // leftButton1->setGeometry(500, 100, 50, 50);
+        // leftButton1->setImage(leftPixmap);
+        // buttons.append(leftButton1);
 
 
     }
